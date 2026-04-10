@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion, useInView } from "framer-motion"
 import { ArrowRight, ArrowUpRight, Braces, Layers3, Play, ShieldCheck, Sparkles } from "lucide-react"
+import { SoftnetMotif } from "@/components/brand/softnet-brand"
 import { Button } from "@/components/ui/button"
 import { Parallax, Reveal, StaggerGroup, StaggerItem } from "@/components/ui/scroll-animations"
 import { stats } from "@/lib/site-config"
@@ -96,7 +97,8 @@ export function Hero() {
 
       <div className="container relative z-10 mx-auto px-4 lg:px-8">
         <div className="grid gap-12 lg:min-h-[calc(100svh-10rem)] lg:grid-cols-[0.96fr_1.04fr] lg:items-center">
-          <div className="js-hero-copy max-w-[49rem]">
+          <div className="js-hero-copy relative max-w-[49rem]">
+            <SoftnetMotif className="pointer-events-none absolute left-[22rem] top-14 hidden h-24 w-44 opacity-[0.5] xl:block" />
             <Reveal delay={0.04} className="section-chip code-caption text-[0.72rem] font-semibold text-primary">
               <span className="section-dot" />
               Estudio digital para empresas que quieren verse más serias y vender con más claridad

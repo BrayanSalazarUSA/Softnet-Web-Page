@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Braces, Cloud, CreditCard, Database, MonitorSmartphone, ServerCog } from "lucide-react"
+import { SoftnetMark, SoftnetMotif } from "@/components/brand/softnet-brand"
 import { SectionIntro } from "@/components/ui/section-intro"
 import { techStack } from "@/lib/site-config"
 
@@ -33,7 +34,8 @@ export function AboutTech() {
 
   return (
     <section id="stack" className="section-light py-24">
-      <div className="container mx-auto px-4 lg:px-8">
+      <div className="container relative mx-auto px-4 lg:px-8">
+        <SoftnetMotif className="pointer-events-none absolute right-8 top-0 hidden h-28 w-56 opacity-[0.48] lg:block" />
         <SectionIntro
           eyebrow="Stack y capacidad técnica"
           icon={Braces}
@@ -71,9 +73,7 @@ export function AboutTech() {
                     Diseñamos interfaces premium, pero también resolvemos datos, backend, pagos y despliegue.
                   </h3>
                 </div>
-                <div className="logo-mark flex h-14 w-14 items-center justify-center rounded-[1.2rem]">
-                  <Braces className="h-6 w-6 text-primary-foreground" />
-                </div>
+                <SoftnetMark className="h-14 w-14 rounded-[1.2rem]" variant="glass" />
               </div>
 
               <div className="mt-7 grid gap-3">

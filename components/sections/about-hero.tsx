@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { SoftnetLockup, SoftnetMark, SoftnetMotif } from "@/components/brand/softnet-brand"
 import { siteConfig, stats } from "@/lib/site-config"
 
 export function AboutHero() {
@@ -9,6 +10,7 @@ export function AboutHero() {
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute left-0 top-0 h-[20rem] w-[20rem] rounded-full bg-[radial-gradient(circle,rgba(59,130,246,0.06),transparent_68%)] blur-3xl" />
         <div className="absolute right-0 top-12 h-[16rem] w-[16rem] rounded-full bg-[radial-gradient(circle,rgba(226,232,240,0.88),transparent_68%)] blur-3xl" />
+        <SoftnetMotif className="absolute right-10 top-10 hidden h-28 w-56 opacity-[0.5] lg:block" />
       </div>
 
       <div className="container relative z-10 mx-auto px-4 lg:px-8">
@@ -58,11 +60,11 @@ export function AboutHero() {
                     Boutique digital con cabeza técnica
                   </h2>
                 </div>
-                <div className="logo-mark flex h-14 w-14 items-center justify-center rounded-[1.2rem]">
-                  <span className="text-2xl font-extrabold text-primary-foreground">
-                    {siteConfig.name.charAt(0)}
-                  </span>
-                </div>
+                <SoftnetMark className="h-14 w-14 rounded-[1.2rem]" />
+              </div>
+
+              <div className="mt-6 border-b border-black/8 pb-5">
+                <SoftnetLockup compact className="[&_span.block]:text-[0.98rem]" />
               </div>
 
               <div className="mt-8 grid gap-4 sm:grid-cols-2">

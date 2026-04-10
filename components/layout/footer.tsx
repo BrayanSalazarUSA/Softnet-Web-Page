@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { ArrowUpRight, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react"
+import { SoftnetLockup, SoftnetMotif } from "@/components/brand/softnet-brand"
 import { navLinks, services, siteConfig } from "@/lib/site-config"
 
 export function Footer() {
@@ -9,24 +10,12 @@ export function Footer() {
   return (
     <footer className="section-dark relative overflow-hidden text-white">
       <div className="soft-grid absolute inset-0 opacity-[0.05]" />
+      <SoftnetMotif className="pointer-events-none absolute right-10 top-8 hidden h-28 w-52 opacity-[0.42] lg:block" tone="dark" />
       <div className="container relative z-10 mx-auto px-4 py-16 lg:px-8 lg:py-20">
         <div className="grid gap-12 border-t border-white/10 pt-10 lg:grid-cols-[1.15fr_0.85fr]">
           <div>
             <Link href="/" className="inline-flex items-center gap-4">
-              <div className="logo-mark flex h-11 w-11 items-center justify-center rounded-[0.95rem]">
-                <span className="text-base font-extrabold text-primary-foreground">
-                  {siteConfig.name.charAt(0)}
-                </span>
-              </div>
-
-              <div>
-                <span className="block text-lg font-extrabold tracking-[-0.05em] text-white">
-                  {siteConfig.name}
-                </span>
-                <span className="mt-1 block text-[0.62rem] uppercase tracking-[0.28em] text-white/38">
-                  Desarrollo web y sistemas
-                </span>
-              </div>
+              <SoftnetLockup theme="dark" markVariant="glass" />
             </Link>
 
             <h3 className="mt-8 max-w-[12ch] text-4xl font-extrabold tracking-[-0.055em] text-white">

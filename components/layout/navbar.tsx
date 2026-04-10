@@ -5,6 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion"
 import { ArrowRight, Menu, X } from "lucide-react"
+import { SoftnetLockup, SoftnetMark, SoftnetMotif } from "@/components/brand/softnet-brand"
 import { Button } from "@/components/ui/button"
 import { navLinks, siteConfig } from "@/lib/site-config"
 import { cn } from "@/lib/utils"
@@ -59,27 +60,13 @@ export function Navbar() {
                 style={{ scaleX: progressScaleX }}
               />
             </div>
+            <SoftnetMotif className="pointer-events-none absolute right-20 top-1 hidden h-16 w-28 opacity-[0.34] xl:block" />
 
             <Link
               href="/"
-              className="group relative flex shrink-0 items-center gap-3 rounded-[0.85rem] border border-black/8 bg-[rgba(255,255,255,0.78)] px-3 py-2 shadow-[0_8px_18px_rgba(15,23,42,0.04)] backdrop-blur-xl"
+              className="group relative shrink-0 rounded-[0.85rem] border border-black/8 bg-[rgba(255,255,255,0.78)] px-3 py-2 shadow-[0_8px_18px_rgba(15,23,42,0.04)] backdrop-blur-xl"
             >
-              <div className="logo-mark flex h-11 w-11 items-center justify-center rounded-[0.95rem]">
-                <span className="text-base font-extrabold text-primary-foreground">
-                  {siteConfig.name.charAt(0)}
-                </span>
-              </div>
-
-              <div className="hidden sm:block">
-                <span className="block text-[1.02rem] font-extrabold tracking-[-0.05em] text-[#121317]">
-                  {siteConfig.name}
-                </span>
-                <div className="mt-0.5 flex items-center gap-3 text-[0.62rem] uppercase tracking-[0.28em] text-[#121317]/34">
-                  <span>Estudio web</span>
-                  <span className="h-1 w-1 rounded-full bg-primary/80" />
-                  <span>Sistemas</span>
-                </div>
-              </div>
+              <SoftnetLockup compact />
             </Link>
 
             <div className="hidden flex-1 justify-center lg:flex">
@@ -171,11 +158,7 @@ export function Navbar() {
                       {siteConfig.name}
                     </p>
                   </div>
-                  <div className="logo-mark flex h-11 w-11 items-center justify-center rounded-[0.9rem]">
-                    <span className="text-base font-extrabold text-primary-foreground">
-                      {siteConfig.name.charAt(0)}
-                    </span>
-                  </div>
+                  <SoftnetMark className="h-11 w-11 rounded-[0.9rem]" variant="glass" />
                 </div>
 
                 <div className="space-y-2">
