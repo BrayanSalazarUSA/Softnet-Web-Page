@@ -71,7 +71,7 @@ export function ContactHero() {
               >
                 <Wrapper
                   {...(info.href ? { href: info.href } : {})}
-                  className={`paper-card block rounded-[1.6rem] p-5 text-[#111318] ${
+                  className={`paper-card block rounded-[1rem] p-5 text-[#111318] ${
                     info.href ? "transition-all duration-300 hover:-translate-y-1 hover:border-primary/28" : ""
                   }`}
                 >

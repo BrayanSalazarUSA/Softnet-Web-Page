@@ -32,7 +32,7 @@ export function ProjectsGrid() {
               onClick={() => setActiveCategory(category)}
               className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-all ${
                 activeCategory === category
-                  ? "bg-[linear-gradient(135deg,#FF7216,#FF8B34)] text-white shadow-[0_18px_38px_rgba(255,122,26,0.24)]"
+                  ? "bg-[#111827] text-white shadow-[0_14px_32px_rgba(15,23,42,0.18)]"
                   : "glow-pill text-[#111318]/74 hover:border-primary/30 hover:text-[#111318]"
               }`}
             >
@@ -53,9 +53,9 @@ export function ProjectsGrid() {
                 transition={{ duration: 0.3, delay: index * 0.04 }}
               >
                 <Link href={`/proyectos/${project.id}`} className="group block h-full">
-                  <div className="paper-card flex h-full flex-col rounded-[1.9rem] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/28">
-                    <div className="ink-panel relative flex aspect-[4/3] items-end overflow-hidden rounded-[1.5rem] p-5 text-white">
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,122,26,0.18),transparent_24%)]" />
+                  <div className="paper-card flex h-full flex-col rounded-[1rem] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/28">
+                    <div className="ink-panel relative flex aspect-[4/3] items-end overflow-hidden rounded-[0.9rem] p-5 text-white">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.12),transparent_24%),radial-gradient(circle_at_bottom_left,rgba(100,116,139,0.08),transparent_26%)]" />
                       <div className="relative z-10">
                         <span className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-white/82">
                           {project.category}

@@ -7,8 +7,8 @@ export function ServicesHero() {
   return (
     <section className="section-light relative overflow-hidden pt-32 pb-20 text-[#111318]">
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute left-[-6rem] top-0 h-[22rem] w-[22rem] rounded-full bg-[radial-gradient(circle,rgba(255,122,26,0.18),transparent_68%)] blur-3xl" />
-        <div className="absolute right-0 top-12 h-[18rem] w-[18rem] rounded-full bg-[radial-gradient(circle,rgba(255,228,201,0.9),transparent_68%)] blur-3xl" />
+        <div className="absolute left-[-6rem] top-0 h-[22rem] w-[22rem] rounded-full bg-[radial-gradient(circle,rgba(59,130,246,0.06),transparent_68%)] blur-3xl" />
+        <div className="absolute right-0 top-12 h-[18rem] w-[18rem] rounded-full bg-[radial-gradient(circle,rgba(226,232,240,0.9),transparent_68%)] blur-3xl" />
       </div>
 
       <div className="container relative z-10 mx-auto px-4 lg:px-8">
@@ -37,7 +37,7 @@ export function ServicesHero() {
             initial={{ opacity: 0, x: 36 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.18 }}
-            className="surface-card rounded-[2.3rem] p-5 lg:p-6"
+            className="surface-card rounded-[1rem] p-5 lg:p-6"
           >
             <div className="grid gap-4 sm:grid-cols-3">
               {[
@@ -59,9 +59,9 @@ export function ServicesHero() {
               ].map(({ icon: Icon, title, copy }) => (
                 <div
                   key={title}
-                  className="paper-card rounded-[1.6rem] p-5 text-[#111318]"
+                  className="paper-card rounded-[1rem] p-5 text-[#111318]"
                 >
-                  <div className="neon-icon-box flex h-12 w-12 items-center justify-center rounded-[1rem]">
+                  <div className="neon-icon-box flex h-12 w-12 items-center justify-center rounded-[0.75rem]">
                     <Icon className="h-5 w-5 text-primary" />
                   </div>
                   <h2 className="mt-5 text-xl font-extrabold tracking-[-0.03em]">{title}</h2>

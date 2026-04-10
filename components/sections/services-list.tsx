@@ -53,13 +53,13 @@ export function ServicesList() {
                 className="scroll-mt-32"
               >
                 <div
-                  className={`group h-full rounded-[2rem] p-6 lg:p-7 ${
+                  className={`group h-full rounded-[1rem] p-6 lg:p-7 ${
                     isFeatured ? "surface-card text-white" : "paper-card text-[#111318]"
                   }`}
                 >
                   <div className="mb-6 flex items-start justify-between gap-4">
                     <div
-                      className={`flex h-14 w-14 items-center justify-center rounded-[1.2rem] ${
+                      className={`flex h-14 w-14 items-center justify-center rounded-[0.8rem] ${
                         isFeatured ? "border border-white/10 bg-white/[0.06]" : "neon-icon-box"
                       }`}
                     >
@@ -102,7 +102,7 @@ export function ServicesList() {
                     {service.benefits.map((benefit) => (
                       <div
                         key={benefit}
-                        className={`flex items-start gap-3 rounded-[1.15rem] px-4 py-4 ${
+                        className={`flex items-start gap-3 rounded-[0.8rem] px-4 py-4 ${
                           isFeatured
                             ? "border border-white/10 bg-white/[0.05]"
                             : "paper-card-soft"
@@ -127,7 +127,7 @@ export function ServicesList() {
                       size="lg"
                       className={
                         isFeatured
-                          ? "border-white/14 bg-white text-[#111318] hover:border-white/20 hover:bg-[#FFF4E9]"
+                          ? "border-white/14 bg-white text-[#111318] hover:border-white/20 hover:bg-[#F8FAFC]"
                           : ""
                       }
                     >

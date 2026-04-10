@@ -1,20 +1,8 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Manrope } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { SmoothScrollProvider } from '@/components/providers/smooth-scroll-provider'
 import { siteConfig } from '@/lib/site-config'
 import './globals.css'
-
-const manrope = Manrope({ 
-  subsets: ["latin"],
-  variable: "--font-heading",
-  weight: ["700", "800"],
-})
-
-const inter = Inter({ 
-  subsets: ["latin"],
-  variable: "--font-body",
-  weight: ["400", "500", "600"],
-})
 
 export const metadata: Metadata = {
   title: {
@@ -62,7 +50,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: "#FF7A1A",
+  themeColor: "#0B0D12",
   width: "device-width",
   initialScale: 1,
 }
@@ -73,9 +61,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es">
-      <body className={`${manrope.variable} ${inter.variable} bg-background font-sans text-foreground antialiased`}>
-        {children}
+    <html lang="es" suppressHydrationWarning>
+      <body suppressHydrationWarning className="bg-background font-sans text-foreground antialiased">
+        <SmoothScrollProvider>{children}</SmoothScrollProvider>
         <Analytics />
       </body>
     </html>

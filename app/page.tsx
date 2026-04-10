@@ -1,7 +1,8 @@
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { Hero } from "@/components/sections/hero"
-import { TrustBadges } from "@/components/sections/trust-badges"
+import { HomeScrollDirector } from "@/components/sections/home-scroll-director"
+import { TrustBadges } from "@/components/sections/trust-signals"
 import { ServicesPreview } from "@/components/sections/services-preview"
 import { Benefits } from "@/components/sections/benefits"
 import { ProjectsPreview } from "@/components/sections/projects-preview"
@@ -15,6 +16,7 @@ export default function HomePage() {
     <>
       <Navbar />
       <main>
+        <HomeScrollDirector />
         <Hero />
         <TrustBadges />
         <ServicesPreview />

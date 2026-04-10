@@ -1,6 +1,8 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { Workflow } from "lucide-react"
+import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/scroll-animations"
+import { SectionIntro } from "@/components/ui/section-intro"
 import { processSteps } from "@/lib/site-config"
 
 const stepOutcomes = [
@@ -15,45 +17,28 @@ export function Process() {
   return (
     <section id="proceso" className="section-wash relative py-28 text-[#111318]">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="mb-16 grid gap-10 lg:grid-cols-[0.84fr_1.16fr] lg:items-end">
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55 }}
-          >
-            <span className="section-chip text-[0.74rem] font-semibold uppercase tracking-[0.26em] text-primary">
-              <span className="section-dot" />
-              Cómo trabajamos
-            </span>
-            <h2 className="mt-7 max-w-[12ch] text-4xl font-extrabold tracking-[-0.05em] md:text-5xl">
+        <SectionIntro
+          eyebrow="Cómo trabajamos"
+          icon={Workflow}
+          title={
+            <>
               Un proceso pensado para que el proyecto se{" "}
               <span className="text-brand-gradient">sienta serio antes, durante y después</span>.
-            </h2>
-          </motion.div>
+            </>
+          }
+          description="No seguimos un timeline genérico. Diseñamos una secuencia de trabajo donde negocio, dirección visual, ejecución técnica y salida a producción se sienten parte de la misma historia."
+          panelKicker="Cadencia de trabajo"
+          panelTitle="Una secuencia clara, con menos fricción y más lectura de avance."
+          panelDescription="La idea no es solo entregar. Es que cada etapa tenga sentido para negocio, diseño y ejecución, y que el cliente sienta progreso real."
+          panelPoints={stepOutcomes.slice(0, 4)}
+        />
 
-          <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55, delay: 0.08 }}
-            className="max-w-2xl text-lg leading-relaxed text-[#111318]/64"
-          >
-            No seguimos un timeline genérico. Diseñamos una secuencia de trabajo donde negocio,
-            dirección visual, ejecución técnica y salida a producción se sienten parte de la misma historia.
-          </motion.p>
-        </div>
-
-        <div className="paper-card relative overflow-hidden rounded-[2.5rem]">
+        <Reveal className="js-process-board paper-card relative overflow-hidden rounded-[1rem]">
           <div className="fine-grid absolute inset-0 opacity-[0.22]" />
-          <div className="relative z-10 grid lg:grid-cols-5">
+          <StaggerGroup stagger={0.08} className="relative z-10 grid lg:grid-cols-5">
             {processSteps.map((step, index) => (
-              <motion.div
+              <StaggerItem
                 key={step.step}
-                initial={{ opacity: 0, y: 22 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: index * 0.05 }}
                 className={`relative flex min-h-[18rem] flex-col border-t border-black/8 px-6 py-8 first:border-t-0 lg:border-t-0 lg:border-l ${
                   index === 0 ? "lg:border-l-0" : ""
                 } ${index % 2 === 1 ? "lg:pt-16" : "lg:pt-8"}`}
@@ -79,10 +64,10 @@ export function Process() {
                   </p>
                   <p className="mt-3 text-sm leading-relaxed text-[#111318]/68">{stepOutcomes[index]}</p>
                 </div>
-              </motion.div>
+              </StaggerItem>
             ))}
-          </div>
-        </div>
+          </StaggerGroup>
+        </Reveal>
       </div>
     </section>
   )

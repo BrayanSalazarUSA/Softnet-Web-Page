@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion"
 import { ArrowRight, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { navLinks, siteConfig } from "@/lib/site-config"
@@ -13,6 +13,12 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
+  const { scrollYProgress } = useScroll()
+  const progressScaleX = useSpring(scrollYProgress, {
+    stiffness: 130,
+    damping: 28,
+    mass: 0.22,
+  })
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 18)
@@ -28,41 +34,56 @@ export function Navbar() {
   return (
     <>
       <motion.header
-        initial={{ y: -80, opacity: 0 }}
+        initial={{ y: -70, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.55 }}
         className="fixed inset-x-0 top-0 z-50"
       >
         <div className="container mx-auto px-4 lg:px-8">
-          <nav
+          <motion.nav
+            animate={{
+              y: isScrolled ? 0 : 2,
+            }}
+            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
             className={cn(
-              "mt-4 grid grid-cols-[auto_1fr_auto] items-center gap-4 border px-4 py-3.5 transition-all duration-300 lg:px-6",
+              "nav-sheen relative mt-4 flex items-center gap-3 overflow-hidden rounded-[1rem] border px-3 py-3 transition-all duration-300 lg:px-4",
               isScrolled
-                ? "border-black/10 bg-[rgba(250,246,239,0.84)] shadow-[0_24px_60px_rgba(17,19,24,0.12)] backdrop-blur-2xl"
-                : "border-black/8 bg-[rgba(252,249,244,0.66)] shadow-[0_18px_40px_rgba(17,19,24,0.08)] backdrop-blur-xl"
+                ? "border-black/10 bg-[rgba(255,255,255,0.88)] shadow-[0_18px_44px_rgba(15,23,42,0.08)] backdrop-blur-xl"
+                : "border-black/8 bg-[rgba(255,255,255,0.72)] shadow-[0_10px_26px_rgba(15,23,42,0.05)] backdrop-blur-lg"
             )}
           >
-            <Link href="/" className="group flex items-center gap-4">
-              <div className="logo-mark flex h-12 w-12 items-center justify-center rounded-[1rem]">
-                <span className="text-lg font-extrabold text-primary-foreground">
+            <div className="absolute inset-x-6 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(59,130,246,0.22),rgba(100,116,139,0.14),transparent)]" />
+            <div className="absolute inset-x-5 bottom-0 h-px overflow-hidden rounded-full bg-black/[0.03]">
+              <motion.div
+                className="h-full origin-left bg-[linear-gradient(90deg,rgba(59,130,246,0.9),rgba(17,24,39,0.82),rgba(59,130,246,0.18))]"
+                style={{ scaleX: progressScaleX }}
+              />
+            </div>
+
+            <Link
+              href="/"
+              className="group relative flex shrink-0 items-center gap-3 rounded-[0.85rem] border border-black/8 bg-[rgba(255,255,255,0.78)] px-3 py-2 shadow-[0_8px_18px_rgba(15,23,42,0.04)] backdrop-blur-xl"
+            >
+              <div className="logo-mark flex h-11 w-11 items-center justify-center rounded-[0.95rem]">
+                <span className="text-base font-extrabold text-primary-foreground">
                   {siteConfig.name.charAt(0)}
                 </span>
               </div>
 
-              <div className="hidden min-w-0 sm:block">
-                <span className="block text-lg font-extrabold tracking-[-0.05em] text-[#111318]">
+              <div className="hidden sm:block">
+                <span className="block text-[1.02rem] font-extrabold tracking-[-0.05em] text-[#121317]">
                   {siteConfig.name}
                 </span>
-                <div className="mt-1 flex items-center gap-3 text-[0.66rem] uppercase tracking-[0.28em] text-[#111318]/42">
-                  <span>Desarrollo web</span>
-                  <span className="h-1 w-1 rounded-full bg-primary/70" />
+                <div className="mt-0.5 flex items-center gap-3 text-[0.62rem] uppercase tracking-[0.28em] text-[#121317]/34">
+                  <span>Estudio web</span>
+                  <span className="h-1 w-1 rounded-full bg-primary/80" />
                   <span>Sistemas</span>
                 </div>
               </div>
             </Link>
 
-            <div className="hidden justify-center lg:flex">
-              <div className="flex items-center gap-7 border-x border-black/8 px-8">
+            <div className="hidden flex-1 justify-center lg:flex">
+              <div className="relative flex items-center gap-1 rounded-[0.95rem] border border-black/8 bg-[rgba(255,255,255,0.82)] p-1.5 shadow-[0_8px_20px_rgba(15,23,42,0.04)] backdrop-blur-xl">
                 {navLinks.map((link) => {
                   const isActive = pathname === link.href
 
@@ -70,48 +91,57 @@ export function Navbar() {
                     <Link
                       key={link.href}
                       href={link.href}
-                      className={cn(
-                        "group relative py-2 text-sm font-medium tracking-[-0.02em] transition-colors",
-                        isActive ? "text-[#111318]" : "text-[#111318]/56 hover:text-[#111318]"
-                      )}
+                      className="relative rounded-[0.8rem] px-4 py-2.5 text-sm font-semibold tracking-[-0.02em]"
                     >
-                      <span>{link.label}</span>
+                      {isActive ? (
+                        <motion.span
+                          layoutId="navbar-active-pill"
+                          transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                          className="absolute inset-0 rounded-[0.8rem] bg-[#111827] shadow-[0_10px_24px_rgba(15,23,42,0.18)]"
+                        />
+                      ) : null}
+
                       <span
                         className={cn(
-                          "absolute inset-x-0 -bottom-0.5 h-px origin-left bg-[linear-gradient(90deg,#FF7A1A,transparent)] transition-transform duration-300",
-                          isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                          "relative z-10 transition-colors",
+                          isActive ? "text-white" : "text-[#121317]/54 hover:text-[#121317]"
                         )}
-                      />
+                      >
+                        {link.label}
+                      </span>
                     </Link>
                   )
                 })}
               </div>
             </div>
 
-            <div className="hidden items-center gap-5 lg:flex">
-              <div className="hidden text-right xl:block">
-                <p className="text-[0.64rem] font-semibold uppercase tracking-[0.28em] text-[#111318]/34">
-                  Agencia boutique
+            <div className="hidden items-center gap-3 lg:flex">
+              <div className="hidden rounded-[0.95rem] border border-black/8 bg-[rgba(255,255,255,0.62)] px-4 py-2.5 text-right shadow-[0_8px_18px_rgba(15,23,42,0.04)] backdrop-blur-xl xl:block">
+                <p className="code-caption text-[0.62rem] font-semibold text-primary/84">
+                  Estudio digital
                 </p>
-                <p className="mt-1 text-sm text-[#111318]/56">Propuesta técnica y comercial en 24h</p>
+                <p className="mt-1 text-sm text-[#121317]/54">Dirección visual + base técnica real</p>
               </div>
 
-              <Button asChild size="lg" className="group">
-                <Link href="/contacto">
-                  Solicitar propuesta
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
+              <div className="relative">
+                <div className="absolute inset-0 rounded-[999px] bg-[radial-gradient(circle,rgba(59,130,246,0.12),transparent_70%)] blur-xl" />
+                <Button asChild size="lg" className="group relative">
+                  <Link href="/contacto">
+                    Solicitar propuesta
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </Button>
+              </div>
             </div>
 
             <button
-              className="inline-flex h-11 w-11 items-center justify-center border border-black/10 bg-white/70 text-[#111318] shadow-[0_10px_24px_rgba(17,19,24,0.08)] backdrop-blur-sm transition-colors lg:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-[999px] border border-black/10 bg-white/84 text-[#121317] shadow-[0_8px_18px_rgba(15,23,42,0.06)] transition-colors lg:hidden"
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
               aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
             >
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
-          </nav>
+          </motion.nav>
         </div>
       </motion.header>
 
@@ -123,34 +153,32 @@ export function Navbar() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-40 lg:hidden"
           >
-            <div className="absolute inset-0 bg-[#0E0F12]/55 backdrop-blur-2xl" />
-
+            <div className="absolute inset-0 bg-[#121317]/56 backdrop-blur-xl" />
             <div className="relative mx-4 mt-24">
               <motion.div
                 initial={{ opacity: 0, y: -18 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -18 }}
                 transition={{ duration: 0.22 }}
-                className="surface-card mx-auto max-w-xl overflow-hidden rounded-[1.8rem] p-6 text-white"
+                className="surface-card mx-auto max-w-xl overflow-hidden rounded-[1rem] p-6 text-white"
               >
                 <div className="mb-6 flex items-center justify-between gap-4 border-b border-white/10 pb-5">
                   <div>
-                    <p className="text-[0.64rem] font-semibold uppercase tracking-[0.28em] text-white/44">
+                    <p className="text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-white/42">
                       Navegación
                     </p>
                     <p className="mt-2 text-2xl font-extrabold tracking-[-0.05em] text-white">
                       {siteConfig.name}
                     </p>
                   </div>
-
-                  <div className="logo-mark flex h-12 w-12 items-center justify-center rounded-[1rem]">
-                    <span className="text-lg font-extrabold text-primary-foreground">
+                  <div className="logo-mark flex h-11 w-11 items-center justify-center rounded-[0.9rem]">
+                    <span className="text-base font-extrabold text-primary-foreground">
                       {siteConfig.name.charAt(0)}
                     </span>
                   </div>
                 </div>
 
-                <div className="space-y-1">
+                <div className="space-y-2">
                   {navLinks.map((link, index) => (
                     <motion.div
                       key={link.href}
@@ -161,8 +189,10 @@ export function Navbar() {
                       <Link
                         href={link.href}
                         className={cn(
-                          "flex items-center justify-between border-b border-white/8 py-4 text-lg font-semibold tracking-[-0.03em] transition-colors",
-                          pathname === link.href ? "text-white" : "text-white/68 hover:text-white"
+                          "flex items-center justify-between rounded-[0.8rem] border px-4 py-4 text-lg font-semibold tracking-[-0.03em] transition-colors",
+                          pathname === link.href
+                            ? "border-white/12 bg-white/8 text-white"
+                            : "border-white/8 text-white/70 hover:border-white/12 hover:bg-white/5 hover:text-white"
                         )}
                       >
                         <span>{link.label}</span>

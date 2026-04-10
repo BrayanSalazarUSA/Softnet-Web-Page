@@ -92,9 +92,9 @@ export default async function ProjectPage({ params }: Props) {
                 </div>
               </div>
 
-              <div className="surface-card rounded-[2.3rem] p-5">
-                <div className="paper-card rounded-[1.8rem] p-6 text-[#111318]">
-                  <div className="ink-panel flex aspect-[4/3] items-end rounded-[1.6rem] p-6">
+              <div className="surface-card rounded-[1rem] p-5">
+                <div className="paper-card rounded-[1rem] p-6 text-[#111318]">
+                  <div className="ink-panel flex aspect-[4/3] items-end rounded-[0.9rem] p-6">
                     <div>
                       <span className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-white/82">
                         Caso de trabajo
@@ -110,7 +110,7 @@ export default async function ProjectPage({ params }: Props) {
 
                   <div className="mt-6 grid gap-3 sm:grid-cols-3">
                     {project.technologies.slice(0, 3).map((tech) => (
-                      <div key={tech} className="paper-card-soft rounded-[1.2rem] p-4">
+                      <div key={tech} className="paper-card-soft rounded-[0.8rem] p-4">
                         <p className="text-sm font-medium text-[#111318]">{tech}</p>
                       </div>
                     ))}
@@ -148,7 +148,7 @@ export default async function ProjectPage({ params }: Props) {
                     "Análisis y métricas en tiempo real",
                     "Base técnica preparada para seguir creciendo",
                   ].map((feature) => (
-                    <div key={feature} className="paper-card rounded-[1.4rem] p-5">
+                    <div key={feature} className="paper-card rounded-[0.9rem] p-5">
                       <div className="flex items-start gap-3">
                         <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
                         <span className="text-sm leading-relaxed text-foreground">{feature}</span>
@@ -160,7 +160,7 @@ export default async function ProjectPage({ params }: Props) {
 
               <div>
                 <div className="sticky top-32 space-y-5">
-                  <div className="paper-card rounded-[1.7rem] p-6">
+                  <div className="paper-card rounded-[1rem] p-6">
                     <h3 className="mb-5 text-xl font-extrabold tracking-[-0.03em] text-foreground">
                       Detalles del proyecto
                     </h3>
@@ -180,7 +180,7 @@ export default async function ProjectPage({ params }: Props) {
                     </dl>
                   </div>
 
-                  <div className="surface-card rounded-[1.7rem] p-6 text-white">
+                  <div className="surface-card rounded-[1rem] p-6 text-white">
                     <h3 className="text-xl font-extrabold tracking-[-0.03em]">
                       ¿Buscas algo similar?
                     </h3>
@@ -188,7 +188,7 @@ export default async function ProjectPage({ params }: Props) {
                       Podemos diseñar una solución con el mismo nivel visual y técnico, pero aterrizada a tu negocio.
                     </p>
                     <div className="mt-5">
-                      <Button asChild variant="outline" className="border-white/12 bg-white text-[#111318] hover:bg-[#FFF4E9]">
+                      <Button asChild variant="outline" className="border-white/12 bg-white text-[#111318] hover:bg-[#F8FAFC]">
                         <Link href="/contacto">
                           Iniciar un proyecto similar
                           <ArrowUpRight className="ml-2 h-4 w-4" />
@@ -210,8 +210,8 @@ export default async function ProjectPage({ params }: Props) {
             <div className="grid gap-6 md:grid-cols-3">
               {otherProjects.map((p) => (
                 <Link key={p.id} href={`/proyectos/${p.id}`} className="group block">
-                  <div className="paper-card rounded-[1.8rem] p-5 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-primary/28">
-                    <div className="ink-panel relative flex aspect-[4/3] items-end overflow-hidden rounded-[1.4rem] p-5">
+                  <div className="paper-card rounded-[1rem] p-5 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-primary/28">
+                    <div className="ink-panel relative flex aspect-[4/3] items-end overflow-hidden rounded-[0.9rem] p-5">
                       <div className="relative z-10">
                         <span className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-white/82">
                           {p.category}

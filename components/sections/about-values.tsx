@@ -76,7 +76,7 @@ export function AboutValues() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55 }}
-            className="surface-card lg:col-span-4 rounded-[2.2rem] p-8 text-white"
+            className="surface-card lg:col-span-4 rounded-[1rem] p-8 text-white"
           >
             <p className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-white/44">
               Nuestra postura
@@ -92,7 +92,7 @@ export function AboutValues() {
               ].map((item) => (
                 <div
                   key={item}
-                  className="rounded-[1.25rem] border border-white/10 bg-white/[0.05] px-4 py-4 text-sm leading-relaxed text-white/78"
+                  className="rounded-[0.8rem] border border-white/10 bg-white/[0.05] px-4 py-4 text-sm leading-relaxed text-white/78"
                 >
                   {item}
                 </div>
@@ -111,10 +111,10 @@ export function AboutValues() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.45, delay: index * 0.05 }}
-                  className="paper-card rounded-[1.7rem] p-6"
+                  className="paper-card rounded-[1rem] p-6"
                 >
                   <div className="mb-6 flex items-start justify-between gap-4">
-                    <div className="neon-icon-box flex h-14 w-14 items-center justify-center rounded-[1.15rem]">
+                    <div className="neon-icon-box flex h-14 w-14 items-center justify-center rounded-[0.8rem]">
                       <Icon className="h-6 w-6 text-primary" />
                     </div>
                     <span className="text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-[#111318]/26">

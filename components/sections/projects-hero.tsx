@@ -41,10 +41,10 @@ export function ProjectsHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.16 }}
-          className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4"
+            className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4"
         >
           {stats.map((stat) => (
-            <div key={stat.label} className="paper-card rounded-[1.6rem] p-5 text-[#111318]">
+            <div key={stat.label} className="paper-card rounded-[1rem] p-5 text-[#111318]">
               <p className="text-3xl font-extrabold tracking-[-0.04em] text-primary">{stat.value}</p>
               <p className="mt-2 text-sm text-[#111318]/58">{stat.label}</p>
             </div>

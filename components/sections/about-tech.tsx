@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Braces, Cloud, CreditCard, Database, MonitorSmartphone, ServerCog } from "lucide-react"
+import { SectionIntro } from "@/components/ui/section-intro"
 import { techStack } from "@/lib/site-config"
 
 const categoryMeta = {
@@ -33,27 +34,34 @@ export function AboutTech() {
   return (
     <section id="stack" className="section-light py-24">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[0.86fr_1.14fr] lg:gap-16">
+        <SectionIntro
+          eyebrow="Stack y capacidad técnica"
+          icon={Braces}
+          title={
+            <>
+              Tecnología moderna, pero elegida con{" "}
+              <span className="text-brand-gradient">criterio práctico</span>.
+            </>
+          }
+          description="Elegimos herramientas que nos permitan diseñar mejor, desarrollar con orden, desplegar con confianza e integrar la solución al contexto real del negocio."
+          panelKicker="Selección tecnológica"
+          panelTitle="No elegimos por moda. Elegimos por claridad, mantenimiento y capacidad de crecer."
+          panelDescription="La idea es que el stack respalde la experiencia del usuario, la operación del negocio y la evolución futura del producto."
+          panelPoints={[
+            "Interfaces rápidas y consistentes.",
+            "Backend e integraciones que sí aguantan.",
+            "Infraestructura lista para escalar.",
+          ]}
+        />
+
+        <div className="grid gap-6 lg:grid-cols-[0.78fr_1.22fr] lg:gap-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="section-chip text-sm font-medium uppercase tracking-[0.22em] text-primary">
-              <span className="section-dot" />
-              Stack y capacidad técnica
-            </span>
-            <h2 className="mt-5 text-3xl font-extrabold tracking-[-0.04em] md:text-4xl lg:text-5xl">
-              Tecnología moderna, pero elegida con{" "}
-              <span className="text-brand-gradient">criterio práctico</span>.
-            </h2>
-            <p className="mt-6 text-lg leading-relaxed text-[#111318]/64">
-              Elegimos herramientas que nos permitan diseñar mejor, desarrollar con orden,
-              desplegar con confianza e integrar la solución al contexto real del negocio.
-            </p>
-
-            <div className="surface-card mt-8 rounded-[2rem] p-8 text-white">
+            <div className="surface-card rounded-[1rem] p-8 text-white">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-white/44">
@@ -76,7 +84,7 @@ export function AboutTech() {
                 ].map((item) => (
                   <div
                     key={item}
-                    className="rounded-[1.2rem] border border-white/10 bg-white/[0.05] px-4 py-4 text-sm leading-relaxed text-white/78"
+                    className="rounded-[0.8rem] border border-white/10 bg-white/[0.05] px-4 py-4 text-sm leading-relaxed text-white/78"
                   >
                     {item}
                   </div>
@@ -99,7 +107,7 @@ export function AboutTech() {
               return (
                 <div
                   key={category}
-                  className={`paper-card rounded-[1.75rem] p-6 ${
+                  className={`paper-card rounded-[1rem] p-6 ${
                     category === "Frontend" ? "md:col-span-2" : ""
                   }`}
                 >
@@ -112,7 +120,7 @@ export function AboutTech() {
                         {description}
                       </p>
                     </div>
-                    <div className="neon-icon-box flex h-12 w-12 items-center justify-center rounded-[1rem]">
+                    <div className="neon-icon-box flex h-12 w-12 items-center justify-center rounded-[0.75rem]">
                       <Icon className="h-5 w-5 text-primary" />
                     </div>
                   </div>
@@ -123,7 +131,7 @@ export function AboutTech() {
                       .map((tech) => (
                         <span
                           key={tech.name}
-                          className="paper-card-soft rounded-full px-3 py-2 text-sm font-medium text-[#111318]/76"
+                          className="paper-card-soft rounded-[999px] px-3 py-2 text-sm font-medium text-[#111318]/76"
                         >
                           {tech.name}
                         </span>

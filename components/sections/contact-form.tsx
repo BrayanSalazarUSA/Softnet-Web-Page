@@ -34,11 +34,11 @@ export function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   const fieldClassName =
-    "h-12 rounded-[1rem] border-black/8 bg-white text-[#111318] shadow-[0_16px_34px_rgba(17,19,24,0.05)] placeholder:text-[#111318]/36 hover:border-primary/35"
+    "h-12 rounded-[0.8rem] border-black/8 bg-white text-[#111318] shadow-[0_12px_24px_rgba(17,19,24,0.04)] placeholder:text-[#111318]/36 hover:border-primary/35"
   const textareaClassName =
-    "resize-none rounded-[1rem] border-black/8 bg-white text-[#111318] shadow-[0_16px_34px_rgba(17,19,24,0.05)] placeholder:text-[#111318]/36 hover:border-primary/35"
+    "resize-none rounded-[0.8rem] border-black/8 bg-white text-[#111318] shadow-[0_12px_24px_rgba(17,19,24,0.04)] placeholder:text-[#111318]/36 hover:border-primary/35"
   const selectClassName =
-    "h-12 w-full rounded-[1rem] border-black/8 bg-white text-[#111318] shadow-[0_16px_34px_rgba(17,19,24,0.05)] data-[placeholder]:text-[#111318]/36 hover:border-primary/35"
+    "h-12 w-full rounded-[0.8rem] border-black/8 bg-white text-[#111318] shadow-[0_12px_24px_rgba(17,19,24,0.04)] data-[placeholder]:text-[#111318]/36 hover:border-primary/35"
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -59,7 +59,7 @@ export function ContactForm() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55 }}
-            className="paper-card rounded-[2.2rem] p-7 lg:p-8"
+            className="paper-card rounded-[1rem] p-7 lg:p-8"
           >
             <span className="section-chip text-sm font-medium uppercase tracking-[0.22em] text-primary">
               <span className="section-dot" />
@@ -77,7 +77,7 @@ export function ContactForm() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="paper-card-soft mt-8 rounded-[1.8rem] p-8 text-center"
+                className="paper-card-soft mt-8 rounded-[1rem] p-8 text-center"
               >
                 <div className="neon-icon-box mx-auto flex h-16 w-16 items-center justify-center rounded-full">
                   <CheckCircle className="h-8 w-8 text-primary" />
@@ -182,7 +182,7 @@ export function ContactForm() {
             transition={{ duration: 0.55, delay: 0.12 }}
             className="grid gap-6"
           >
-            <div className="accent-panel rounded-[2rem] p-8 text-white">
+            <div className="accent-panel rounded-[1rem] p-8 text-white">
               <p className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-white/78">
                 Qué puedes esperar
               </p>
@@ -197,7 +197,7 @@ export function ContactForm() {
                 ].map((item) => (
                   <div
                     key={item}
-                    className="rounded-[1.15rem] border border-white/16 bg-white/10 px-4 py-4 text-sm text-white/84"
+                    className="rounded-[0.8rem] border border-white/16 bg-white/10 px-4 py-4 text-sm text-white/84"
                   >
                     {item}
                   </div>
@@ -205,7 +205,7 @@ export function ContactForm() {
               </div>
             </div>
 
-            <div className="surface-card rounded-[2rem] p-8 text-white">
+            <div className="surface-card rounded-[1rem] p-8 text-white">
               <h3 className="text-2xl font-extrabold tracking-[-0.04em]">
                 Por qué trabajar con nosotros
               </h3>
@@ -218,7 +218,7 @@ export function ContactForm() {
                 ].map((item) => (
                   <div
                     key={item}
-                    className="rounded-[1.15rem] border border-white/10 bg-white/[0.05] px-4 py-4 text-sm leading-relaxed text-white/80"
+                    className="rounded-[0.8rem] border border-white/10 bg-white/[0.05] px-4 py-4 text-sm leading-relaxed text-white/80"
                   >
                     {item}
                   </div>
