@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Award, Heart, Lightbulb, Rocket, Target, Users2 } from "lucide-react"
+import { Award, Heart, Lightbulb, Rocket, Target, Users2, CheckSquare } from "lucide-react"
 
 const values = [
   {
@@ -38,69 +38,66 @@ const values = [
 
 export function AboutValues() {
   return (
-    <section id="valores" className="section-wash py-24">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl"
-          >
-            <span className="section-chip text-sm font-medium uppercase tracking-[0.22em] text-primary">
-              <span className="section-dot" />
-              Valores
-            </span>
-            <h2 className="mt-5 text-3xl font-extrabold tracking-[-0.04em] md:text-4xl lg:text-5xl">
-              Nos interesa que el proyecto se vea bien, sí, pero sobre todo que{" "}
-              <span className="text-brand-gradient">se sostenga bien en negocio</span>.
-            </h2>
-          </motion.div>
+    <section id="valores" className="bg-slate-50 py-24 relative overflow-hidden border-b border-slate-200">
+      {/* Precision Grid Background */}
+      <div className="absolute inset-0 opacity-[0.4]"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), 
+            linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px)
+          `,
+          backgroundSize: "20px 20px",
+        }}
+      />
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.08 }}
-            className="max-w-xl text-lg leading-relaxed text-[#111318]/64"
-          >
-            Nuestro estándar mezcla criterio visual, base técnica y ejecución responsable. La meta
-            no es sorprender cinco minutos, sino construir algo serio que dure.
-          </motion.p>
+      <div className="container relative z-10 mx-auto px-4 lg:px-8">
+        <div className="mb-16 border-l-2 border-red-600 pl-6">
+          <p className="font-mono text-[0.65rem] font-bold uppercase tracking-widest text-red-600 mb-2">
+            // PRINCIPIOS DE INGENIERÍA
+          </p>
+          <h2 className="text-4xl lg:text-5xl font-bold tracking-[-0.02em] text-slate-900 max-w-3xl">
+            Construimos software que{" "}
+            <span className="text-slate-400">se sostiene en producción.</span>
+          </h2>
+          <p className="mt-4 max-w-2xl text-slate-600 font-medium">
+            Nuestro estándar mezcla criterio visual, base técnica y ejecución responsable. La meta no es sorprender cinco minutos, sino construir una arquitectura que dure.
+          </p>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-12">
+        <div className="grid gap-8 lg:grid-cols-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55 }}
-            className="surface-card lg:col-span-4 rounded-[1rem] p-8 text-white"
+            className="border border-slate-200 bg-slate-900 lg:col-span-4 p-8 text-white shadow-sm h-fit"
           >
-            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-white/44">
+            <p className="font-mono text-[0.65rem] font-bold uppercase tracking-widest text-red-500 mb-4">
               Nuestra postura
             </p>
-            <h3 className="mt-5 text-3xl font-extrabold tracking-[-0.04em]">
-              El diseño importa. La arquitectura también. Y uno sin el otro no basta.
+            <h3 className="text-2xl font-bold tracking-[-0.02em] mb-6">
+              El diseño importa. La arquitectura también. Uno sin el otro no basta.
             </h3>
-            <div className="mt-8 grid gap-3">
+            <div className="grid gap-px bg-slate-800 border border-slate-800">
               {[
-                "Diseñamos para percepción, conversión y claridad.",
-                "Desarrollamos pensando en mantenimiento, escalabilidad e integración.",
-                "Acompañamos con una relación directa y sin discurso vacío.",
+                "Diseñamos para conversión y claridad.",
+                "Desarrollamos pensando en escalabilidad.",
+                "Comunicación directa, sin abstracciones.",
               ].map((item) => (
                 <div
                   key={item}
-                  className="rounded-[0.8rem] border border-white/10 bg-white/[0.05] px-4 py-4 text-sm leading-relaxed text-white/78"
+                  className="flex items-start gap-3 bg-slate-900 p-4"
                 >
-                  {item}
+                  <CheckSquare className="mt-px h-4 w-4 flex-shrink-0 text-red-500" />
+                  <span className="text-sm text-slate-300">
+                    {item}
+                  </span>
                 </div>
               ))}
             </div>
           </motion.div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:col-span-8 xl:grid-cols-3">
+          <div className="grid gap-px bg-slate-200 border border-slate-200 sm:grid-cols-2 lg:col-span-8 shadow-sm h-fit">
             {values.map((value, index) => {
               const Icon = value.icon
 
@@ -111,20 +108,20 @@ export function AboutValues() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.45, delay: index * 0.05 }}
-                  className="paper-card rounded-[1rem] p-6"
+                  className="bg-white p-8 group hover:bg-slate-50 transition-colors"
                 >
-                  <div className="mb-6 flex items-start justify-between gap-4">
-                    <div className="neon-icon-box flex h-14 w-14 items-center justify-center rounded-[0.8rem]">
-                      <Icon className="h-6 w-6 text-primary" />
+                  <div className="mb-6 flex items-start justify-between">
+                    <div className="flex h-12 w-12 items-center justify-center border border-slate-200 bg-white text-slate-400 group-hover:text-red-600 transition-colors">
+                      <Icon className="h-5 w-5" />
                     </div>
-                    <span className="text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-[#111318]/26">
+                    <span className="font-mono text-xs font-bold text-slate-400">
                       0{index + 1}
                     </span>
                   </div>
-                  <h3 className="text-2xl font-extrabold tracking-[-0.04em] text-[#111318]">
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">
                     {value.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-[#111318]/62">
+                  <p className="text-sm leading-relaxed text-slate-600">
                     {value.description}
                   </p>
                 </motion.div>

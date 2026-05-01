@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ArrowLeft, ArrowUpRight, CheckCircle } from "lucide-react"
@@ -94,7 +95,15 @@ export default async function ProjectPage({ params }: Props) {
 
               <div className="surface-card rounded-[1rem] p-5">
                 <div className="paper-card rounded-[1rem] p-6 text-[#111318]">
-                  <div className="ink-panel flex aspect-[4/3] items-end rounded-[0.9rem] p-6">
+                  <div className="ink-panel relative flex aspect-[4/3] items-end overflow-hidden rounded-[0.9rem] p-6">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover object-top"
+                      sizes="(min-width: 1024px) 42vw, 100vw"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,10,14,0.04),rgba(8,10,14,0.58))]" />
                     <div>
                       <span className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-white/82">
                         Caso de trabajo
@@ -150,7 +159,7 @@ export default async function ProjectPage({ params }: Props) {
                   ].map((feature) => (
                     <div key={feature} className="paper-card rounded-[0.9rem] p-5">
                       <div className="flex items-start gap-3">
-                        <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
+                        <CheckCircle className="mt-px h-5 w-5 flex-shrink-0 text-primary" />
                         <span className="text-sm leading-relaxed text-foreground">{feature}</span>
                       </div>
                     </div>
@@ -212,6 +221,14 @@ export default async function ProjectPage({ params }: Props) {
                 <Link key={p.id} href={`/proyectos/${p.id}`} className="group block">
                   <div className="paper-card rounded-[1rem] p-5 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-primary/28">
                     <div className="ink-panel relative flex aspect-[4/3] items-end overflow-hidden rounded-[0.9rem] p-5">
+                      <Image
+                        src={p.image}
+                        alt={p.title}
+                        fill
+                        className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+                        sizes="(min-width: 768px) 30vw, 100vw"
+                      />
+                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,10,14,0.06),rgba(8,10,14,0.52))]" />
                       <div className="relative z-10">
                         <span className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-white/82">
                           {p.category}

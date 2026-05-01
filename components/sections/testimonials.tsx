@@ -1,8 +1,7 @@
 "use client"
 
-import { Quote, ShieldCheck, Star } from "lucide-react"
+import { Quote, Star } from "lucide-react"
 import { Parallax, Reveal, StaggerGroup, StaggerItem } from "@/components/ui/scroll-animations"
-import { SectionIntro } from "@/components/ui/section-intro"
 import { testimonials } from "@/lib/site-config"
 
 export function Testimonials() {
@@ -10,92 +9,98 @@ export function Testimonials() {
   const supportingTestimonials = testimonials.slice(1)
 
   return (
-    <section id="testimonios-home" className="section-light py-28 text-[#111318]">
-      <div className="container mx-auto px-4 lg:px-8">
-        <SectionIntro
-          eyebrow="Testimonios"
-          icon={ShieldCheck}
-          title={
-            <>
-              Clientes que valoran{" "}
-              <span className="text-brand-gradient">claridad, ejecución y solvencia técnica</span>.
-            </>
-          }
-          description="La mejor señal no es solo que el diseño guste, sino que el proyecto sea fácil de defender dentro de la empresa porque se ve mejor, opera mejor y entrega resultados."
-          panelKicker="Lo que más se repite"
-          panelTitle="Que el proyecto se ve bien, pero sobre todo se entiende, se usa y se defiende."
-          panelDescription="Cuando el trabajo tiene criterio visual y base técnica, la confianza no depende solo del discurso comercial."
-          panelPoints={[
-            "Mejor percepción desde el primer vistazo.",
-            "Más orden operativo para el equipo.",
-            "Resultados fáciles de explicar internamente.",
-          ]}
-        />
+    <section id="testimonios-home" className="bg-slate-50 py-28 border-t border-slate-200 relative overflow-hidden">
+      {/* Precision Grid Background */}
+      <div className="absolute inset-0 opacity-[0.4]"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), 
+            linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px)
+          `,
+          backgroundSize: "20px 20px",
+        }}
+      />
 
-        <div className="grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-start">
+      <div className="container relative z-10 mx-auto px-4 lg:px-8">
+        <div className="mb-16 border-l-2 border-red-600 pl-6">
+          <p className="font-mono text-[0.65rem] font-bold uppercase tracking-widest text-red-600 mb-2">
+            // VALIDACIÓN
+          </p>
+          <h2 className="text-4xl lg:text-5xl font-bold tracking-[-0.02em] text-slate-900 max-w-3xl">
+            Sistemas que se defienden{" "}
+            <span className="text-slate-400">frente a negocio.</span>
+          </h2>
+          <p className="mt-4 max-w-2xl text-slate-600 font-medium">
+            La mejor señal no es solo que el diseño guste, sino que el proyecto sea fácil de explicar internamente porque opera mejor y entrega resultados.
+          </p>
+        </div>
+
+        <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
           <Parallax offset={16}>
-            <Reveal className="paper-card relative overflow-hidden rounded-[1rem] p-8 sm:p-10 lg:p-12">
-              <div className="absolute right-10 top-8 text-primary/10">
+            <Reveal className="border border-slate-200 bg-white p-8 sm:p-10 lg:p-12 shadow-sm relative">
+              <div className="absolute right-8 top-8 text-slate-100">
                 <Quote className="h-24 w-24" />
               </div>
 
               <div className="mb-8 flex items-center gap-1">
                 {Array.from({ length: featuredTestimonial.rating }).map((_, index) => (
-                  <Star key={index} className="h-4 w-4 fill-primary text-primary" />
+                  <Star key={index} className="h-4 w-4 fill-red-600 text-red-600" />
                 ))}
               </div>
 
-              <p className="max-w-3xl text-3xl font-medium leading-[1.32] tracking-[-0.04em] text-[#111318] lg:text-[2.4rem]">
+              <p className="max-w-3xl text-2xl font-bold leading-[1.32] tracking-[-0.02em] text-slate-900 lg:text-[2rem] relative z-10">
                 &ldquo;{featuredTestimonial.content}&rdquo;
               </p>
 
-              <div className="mt-12 grid gap-6 border-t border-black/8 pt-6 sm:grid-cols-[auto_1fr_auto] sm:items-center">
-                <div className="flex h-16 w-16 items-center justify-center border border-black/10 bg-white/70 text-xl font-extrabold text-[#111318] shadow-[0_12px_28px_rgba(17,19,24,0.06)]">
+              <div className="mt-12 grid gap-6 border-t border-slate-200 pt-6 sm:grid-cols-[auto_1fr_auto] sm:items-center">
+                <div className="flex h-14 w-14 items-center justify-center border border-slate-200 bg-slate-50 text-xl font-bold text-slate-900">
                   {featuredTestimonial.name.charAt(0)}
                 </div>
 
                 <div>
-                  <p className="text-lg font-extrabold tracking-[-0.03em] text-[#111318]">
+                  <p className="text-lg font-bold tracking-[-0.02em] text-slate-900">
                     {featuredTestimonial.name}
                   </p>
-                  <p className="mt-1 text-sm text-[#111318]/56">
+                  <p className="font-mono text-xs text-slate-500 uppercase tracking-widest mt-1">
                     {featuredTestimonial.role}, {featuredTestimonial.company}
                   </p>
                 </div>
 
-                <div className="border-l border-black/10 pl-5">
-                  <p className="text-[0.66rem] font-semibold uppercase tracking-[0.28em] text-primary/76">
-                    Señal
+                <div className="border-l border-slate-200 pl-5">
+                  <p className="font-mono text-[0.65rem] font-bold uppercase tracking-widest text-red-600">
+                    Resultado
                   </p>
-                  <p className="mt-2 text-sm leading-relaxed text-[#111318]/62">
-                    Proyecto fácil de defender frente a negocio.
+                  <p className="mt-1 text-sm font-medium text-slate-700">
+                    Ejecución técnica rigurosa.
                   </p>
                 </div>
               </div>
             </Reveal>
           </Parallax>
 
-          <StaggerGroup stagger={0.09} className="border-y border-black/10">
+          <StaggerGroup stagger={0.09} className="border border-slate-200 bg-white shadow-sm flex flex-col">
             {supportingTestimonials.map((testimonial, index) => (
-              <StaggerItem key={testimonial.name} className="border-t border-black/10 py-7 first:border-t-0">
-                <div className="mb-4 flex items-center gap-1">
-                  {Array.from({ length: testimonial.rating }).map((_, starIndex) => (
-                    <Star key={starIndex} className="h-4 w-4 fill-primary text-primary" />
-                  ))}
+              <StaggerItem key={testimonial.name} className="p-8 border-b border-slate-200 last:border-b-0 flex flex-col justify-between h-full">
+                <div>
+                  <div className="mb-4 flex items-center gap-1">
+                    {Array.from({ length: testimonial.rating }).map((_, starIndex) => (
+                      <Star key={starIndex} className="h-3 w-3 fill-slate-300 text-slate-300" />
+                    ))}
+                  </div>
+
+                  <p className="text-sm font-medium leading-relaxed text-slate-700">
+                    &ldquo;{testimonial.content}&rdquo;
+                  </p>
                 </div>
 
-                <p className="text-xl leading-relaxed tracking-[-0.02em] text-[#111318]/82">
-                  &ldquo;{testimonial.content}&rdquo;
-                </p>
-
                 <div className="mt-6 flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center border border-black/10 bg-white/68 font-extrabold text-[#111318] shadow-[0_12px_24px_rgba(17,19,24,0.05)]">
+                  <div className="flex h-10 w-10 items-center justify-center border border-slate-200 bg-slate-50 font-bold text-slate-900 text-sm">
                     {testimonial.name.charAt(0)}
                   </div>
                   <div>
-                    <p className="font-semibold text-[#111318]">{testimonial.name}</p>
-                    <p className="text-sm text-[#111318]/54">
-                      {testimonial.role}, {testimonial.company}
+                    <p className="font-bold text-slate-900 text-sm">{testimonial.name}</p>
+                    <p className="font-mono text-[0.6rem] text-slate-500 uppercase tracking-widest">
+                      {testimonial.company}
                     </p>
                   </div>
                 </div>

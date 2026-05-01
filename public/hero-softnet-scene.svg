@@ -1,0 +1,138 @@
+<svg width="1600" height="1220" viewBox="0 0 1600 1220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgPanel" x1="194" y1="90" x2="1244" y2="1030" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111827" />
+      <stop offset="1" stop-color="#090B11" />
+    </linearGradient>
+    <linearGradient id="panelBorder" x1="274" y1="142" x2="1222" y2="1012" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" stop-opacity="0.2" />
+      <stop offset="1" stop-color="#60A5FA" stop-opacity="0.14" />
+    </linearGradient>
+    <linearGradient id="windowFill" x1="418" y1="210" x2="1096" y2="798" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A" stop-opacity="0.96" />
+      <stop offset="1" stop-color="#111827" stop-opacity="0.92" />
+    </linearGradient>
+    <linearGradient id="blueStroke" x1="544" y1="310" x2="1114" y2="878" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#60A5FA" stop-opacity="0.9" />
+      <stop offset="1" stop-color="#2563EB" stop-opacity="0.45" />
+    </linearGradient>
+    <linearGradient id="codeStroke" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#93C5FD" stop-opacity="0.86" />
+      <stop offset="1" stop-color="#64748B" stop-opacity="0.2" />
+    </linearGradient>
+    <radialGradient id="orbGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1128 286) rotate(90) scale(164 164)">
+      <stop stop-color="#60A5FA" stop-opacity="0.36" />
+      <stop offset="1" stop-color="#60A5FA" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="orbCore" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1128 286) rotate(90) scale(74 74)">
+      <stop stop-color="#FFFFFF" stop-opacity="0.95" />
+      <stop offset="0.44" stop-color="#BFDBFE" stop-opacity="0.9" />
+      <stop offset="1" stop-color="#3B82F6" stop-opacity="0.2" />
+    </radialGradient>
+    <filter id="shadow" x="168" y="78" width="1188" height="1068" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="28" stdDeviation="36" flood-color="#020617" flood-opacity="0.26" />
+    </filter>
+    <filter id="softGlow" x="992" y="150" width="272" height="272" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="20" />
+    </filter>
+  </defs>
+
+  <g filter="url(#shadow)">
+    <rect x="210" y="110" width="1100" height="980" rx="42" fill="url(#bgPanel)" />
+    <rect x="210.75" y="110.75" width="1098.5" height="978.5" rx="41.25" stroke="url(#panelBorder)" stroke-width="1.5" />
+  </g>
+
+  <g opacity="0.24">
+    <path d="M254 164H1266" stroke="#FFFFFF" stroke-opacity="0.12" />
+    <path d="M254 218H1266" stroke="#FFFFFF" stroke-opacity="0.08" />
+    <path d="M254 272H1266" stroke="#FFFFFF" stroke-opacity="0.06" />
+  </g>
+
+  <g>
+    <circle cx="278" cy="164" r="7" fill="#F87171" fill-opacity="0.8" />
+    <circle cx="304" cy="164" r="7" fill="#FBBF24" fill-opacity="0.8" />
+    <circle cx="330" cy="164" r="7" fill="#60A5FA" fill-opacity="0.9" />
+    <path d="M1102 164H1238" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="10" stroke-linecap="round" />
+    <path d="M1160 164H1238" stroke="#60A5FA" stroke-opacity="0.68" stroke-width="10" stroke-linecap="round" />
+  </g>
+
+  <g opacity="0.12">
+    <path d="M278 872H1242" stroke="#FFFFFF" />
+    <path d="M278 920H1242" stroke="#FFFFFF" />
+    <path d="M278 968H1242" stroke="#FFFFFF" />
+  </g>
+
+  <rect x="310" y="228" width="592" height="350" rx="30" fill="url(#windowFill)" stroke="#FFFFFF" stroke-opacity="0.08" />
+  <rect x="932" y="228" width="286" height="224" rx="26" fill="#0F172A" fill-opacity="0.88" stroke="#FFFFFF" stroke-opacity="0.08" />
+  <rect x="932" y="484" width="286" height="202" rx="26" fill="#101726" fill-opacity="0.86" stroke="#FFFFFF" stroke-opacity="0.08" />
+  <rect x="310" y="614" width="444" height="220" rx="28" fill="#0E1626" fill-opacity="0.86" stroke="#FFFFFF" stroke-opacity="0.08" />
+  <rect x="782" y="720" width="436" height="174" rx="28" fill="#0B1220" fill-opacity="0.88" stroke="#FFFFFF" stroke-opacity="0.08" />
+
+  <g opacity="0.9">
+    <path d="M358 280H486" stroke="#E2E8F0" stroke-opacity="0.78" stroke-width="12" stroke-linecap="round" />
+    <path d="M358 318H560" stroke="#E2E8F0" stroke-opacity="0.16" stroke-width="8" stroke-linecap="round" />
+    <path d="M358 346H520" stroke="#60A5FA" stroke-opacity="0.9" stroke-width="8" stroke-linecap="round" />
+  </g>
+
+  <g opacity="0.92">
+    <path d="M360 516C420 434 490 382 574 364C666 344 748 374 844 452" stroke="url(#blueStroke)" stroke-width="5" stroke-linecap="round" />
+    <circle cx="360" cy="516" r="8" fill="#93C5FD" />
+    <circle cx="574" cy="364" r="9" fill="#60A5FA" />
+    <circle cx="844" cy="452" r="8" fill="#BFDBFE" />
+  </g>
+
+  <g opacity="0.24">
+    <rect x="362" y="390" width="72" height="102" rx="16" fill="#111827" stroke="#FFFFFF" stroke-opacity="0.14" />
+    <rect x="450" y="418" width="72" height="74" rx="16" fill="#111827" stroke="#FFFFFF" stroke-opacity="0.14" />
+    <rect x="538" y="438" width="72" height="54" rx="16" fill="#111827" stroke="#FFFFFF" stroke-opacity="0.14" />
+  </g>
+
+  <g opacity="0.86">
+    <path d="M966 286H1122" stroke="#E2E8F0" stroke-opacity="0.78" stroke-width="11" stroke-linecap="round" />
+    <path d="M966 322H1080" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="8" stroke-linecap="round" />
+    <path d="M966 356H1044" stroke="#60A5FA" stroke-width="8" stroke-linecap="round" />
+    <path d="M966 390H1180" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="8" stroke-linecap="round" />
+  </g>
+
+  <g filter="url(#softGlow)">
+    <circle cx="1128" cy="286" r="86" fill="url(#orbGlow)" />
+  </g>
+  <circle cx="1128" cy="286" r="64" fill="url(#orbCore)" />
+  <circle cx="1128" cy="286" r="96" stroke="#93C5FD" stroke-opacity="0.28" stroke-dasharray="6 11" />
+
+  <g opacity="0.78">
+    <path d="M966 534H1146" stroke="#E2E8F0" stroke-opacity="0.74" stroke-width="10" stroke-linecap="round" />
+    <path d="M966 574H1092" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="7" stroke-linecap="round" />
+    <path d="M966 612H1188" stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="7" stroke-linecap="round" />
+  </g>
+
+  <g opacity="0.9">
+    <path d="M358 662H580" stroke="#E2E8F0" stroke-opacity="0.74" stroke-width="10" stroke-linecap="round" />
+    <path d="M358 700H508" stroke="#60A5FA" stroke-width="8" stroke-linecap="round" />
+    <path d="M358 738H654" stroke="#FFFFFF" stroke-opacity="0.14" stroke-width="7" stroke-linecap="round" />
+    <path d="M358 776H604" stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="7" stroke-linecap="round" />
+  </g>
+
+  <g opacity="0.84">
+    <path d="M822 768H990" stroke="#E2E8F0" stroke-opacity="0.74" stroke-width="10" stroke-linecap="round" />
+    <path d="M822 808H1128" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="8" stroke-linecap="round" />
+    <path d="M822 846H1068" stroke="#60A5FA" stroke-opacity="0.82" stroke-width="8" stroke-linecap="round" />
+  </g>
+
+  <g opacity="0.42">
+    <path d="M1216 724C1178 664 1112 628 1036 626C958 624 896 654 852 718" stroke="#93C5FD" stroke-width="2" stroke-dasharray="6 11" />
+    <circle cx="852" cy="718" r="6.5" fill="#60A5FA" />
+    <circle cx="1216" cy="724" r="6.5" fill="#BFDBFE" />
+  </g>
+
+  <g opacity="0.78">
+    <rect x="1094" y="872" width="112" height="48" rx="14" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.1" />
+    <path d="M1122 896H1178" stroke="#93C5FD" stroke-width="6" stroke-linecap="round" />
+  </g>
+
+  <g opacity="0.54">
+    <path d="M418 934H932" stroke="url(#codeStroke)" stroke-width="3" stroke-linecap="round" />
+    <path d="M418 968H826" stroke="url(#codeStroke)" stroke-width="3" stroke-linecap="round" />
+    <path d="M418 1002H976" stroke="url(#codeStroke)" stroke-width="3" stroke-linecap="round" />
+  </g>
+</svg>

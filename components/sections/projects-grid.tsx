@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { useState } from "react"
 import Link from "next/link"
 import { AnimatePresence, motion } from "framer-motion"
@@ -55,6 +56,14 @@ export function ProjectsGrid() {
                 <Link href={`/proyectos/${project.id}`} className="group block h-full">
                   <div className="paper-card flex h-full flex-col rounded-[1rem] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/28">
                     <div className="ink-panel relative flex aspect-[4/3] items-end overflow-hidden rounded-[0.9rem] p-5 text-white">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+                        sizes="(min-width: 1280px) 26vw, (min-width: 768px) 42vw, 100vw"
+                      />
+                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,10,14,0.06),rgba(8,10,14,0.5))]" />
                       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.12),transparent_24%),radial-gradient(circle_at_bottom_left,rgba(100,116,139,0.08),transparent_26%)]" />
                       <div className="relative z-10">
                         <span className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-white/82">

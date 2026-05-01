@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, ArrowUpRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -76,7 +77,19 @@ export function ProjectsPreview() {
                   </div>
 
                   <div className="relative z-10 flex h-full flex-col justify-end">
-                    <div className="overflow-hidden rounded-[0.9rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,255,255,0.02))] p-5">
+                    <div className="overflow-hidden rounded-[0.9rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,255,255,0.02))]">
+                      <div className="relative aspect-[16/10] overflow-hidden border-b border-white/10">
+                        <Image
+                          src={featuredProject.image}
+                          alt={featuredProject.title}
+                          fill
+                          className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.035]"
+                          sizes="(min-width: 1024px) 40vw, 100vw"
+                        />
+                        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,10,14,0.02),rgba(8,10,14,0.36))]" />
+                      </div>
+
+                      <div className="p-5">
                       <p className="text-[0.64rem] font-semibold uppercase tracking-[0.28em] text-white/44">
                         Resultado visible
                       </p>
@@ -85,6 +98,7 @@ export function ProjectsPreview() {
                       </p>
                       <div className="mt-6 h-28 overflow-hidden rounded-[0.8rem] border border-primary/18 bg-black/16">
                         <div className="h-full w-full bg-[linear-gradient(180deg,rgba(226,232,240,0.24),rgba(59,130,246,0.38),rgba(15,23,42,0.78))] [clip-path:polygon(0_82%,16%_58%,30%_68%,48%_30%,62%_52%,78%_18%,90%_32%,100%_14%,100%_100%,0_100%)]" />
+                      </div>
                       </div>
                     </div>
                   </div>
@@ -99,6 +113,16 @@ export function ProjectsPreview() {
             <StaggerItem key={project.id}>
               <Link href={`/proyectos/${project.id}`} className="js-project-secondary group block h-full">
                 <div className="paper-card-soft h-full rounded-[1rem] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/24">
+                  <div className="relative mb-5 aspect-[16/10] overflow-hidden rounded-[0.9rem] border border-black/8 bg-[#E5E7EB]">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+                      sizes="(min-width: 1024px) 22vw, 100vw"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(15,23,42,0.16))]" />
+                  </div>
                   <div className="flex items-center justify-between gap-4">
                     <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-primary/76">
                       {project.category}

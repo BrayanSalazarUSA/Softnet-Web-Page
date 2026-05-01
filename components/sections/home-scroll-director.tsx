@@ -43,6 +43,18 @@ const sectionThemes = [
     },
   },
   {
+    trigger: "#automatizacion-home",
+    vars: {
+      "--page-glow-a": "rgba(59, 130, 246, 0.04)",
+      "--page-glow-b": "rgba(100, 116, 139, 0.06)",
+      "--page-glow-c": "rgba(226, 232, 240, 0.38)",
+      "--page-base-top": "#FFFFFF",
+      "--page-base-mid": "#F8FAFC",
+      "--page-base-bottom": "#EEF2F7",
+      "--page-grid-opacity": "0.13",
+    },
+  },
+  {
     trigger: "#casos",
     vars: {
       "--page-glow-a": "rgba(59, 130, 246, 0.03)",
@@ -52,6 +64,18 @@ const sectionThemes = [
       "--page-base-mid": "#FBFBFD",
       "--page-base-bottom": "#F5F7FA",
       "--page-grid-opacity": "0.15",
+    },
+  },
+  {
+    trigger: "#showcase-home",
+    vars: {
+      "--page-glow-a": "rgba(59, 130, 246, 0.04)",
+      "--page-glow-b": "rgba(15, 23, 42, 0.07)",
+      "--page-glow-c": "rgba(148, 163, 184, 0.16)",
+      "--page-base-top": "#0D1117",
+      "--page-base-mid": "#090C11",
+      "--page-base-bottom": "#06080C",
+      "--page-grid-opacity": "0.08",
     },
   },
   {
@@ -237,6 +261,86 @@ export function HomeScrollDirector() {
         })
 
         gsap.fromTo(
+          ".js-automation-board",
+          {
+            y: 34,
+            opacity: 0.74,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.95,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: "#automatizacion-home",
+              start: "top 72%",
+              once: true,
+            },
+          }
+        )
+
+        gsap.fromTo(
+          ".js-automation-step",
+          {
+            x: 26,
+            opacity: 0,
+          },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.72,
+            stagger: 0.09,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: "#automatizacion-home",
+              start: "top 68%",
+              once: true,
+            },
+          }
+        )
+
+        gsap.fromTo(
+          ".js-automation-copy",
+          {
+            y: 26,
+            opacity: 0.76,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.88,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: "#automatizacion-home",
+              start: "top 70%",
+              once: true,
+            },
+          }
+        )
+
+        gsap.to(".js-automation-board", {
+          yPercent: -3,
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#automatizacion-home",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
+        })
+
+        gsap.to(".js-automation-copy", {
+          yPercent: -2,
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#automatizacion-home",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
+        })
+
+        gsap.fromTo(
           ".js-projects-feature",
           {
             y: 30,
@@ -262,6 +366,36 @@ export function HomeScrollDirector() {
           ease: "none",
           scrollTrigger: {
             trigger: "#casos",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
+        })
+
+        gsap.fromTo(
+          ".js-project-motion-stage",
+          {
+            y: 32,
+            opacity: 0.78,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.95,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: "#showcase-home",
+              start: "top 72%",
+              once: true,
+            },
+          }
+        )
+
+        gsap.to(".js-project-motion-stage", {
+          yPercent: -2,
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#showcase-home",
             start: "top bottom",
             end: "bottom top",
             scrub: 1,

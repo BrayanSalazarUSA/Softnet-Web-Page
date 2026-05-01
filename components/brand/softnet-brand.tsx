@@ -20,43 +20,34 @@ type SoftnetMotifProps = {
   tone?: "light" | "dark"
 }
 
+// Nuevo Isotipo: Rayo / Energía / Innovación (Rojo Ingeniería)
 function SoftnetGlyph({ className }: { className?: string }) {
   const gradientId = useId()
 
   return (
-    <svg viewBox="0 0 48 48" className={cn("h-[58%] w-[58%]", className)} fill="none" aria-hidden="true">
+    <svg viewBox="0 0 48 48" className={cn("h-[64%] w-[64%]", className)} fill="none" aria-hidden="true">
       <defs>
-        <linearGradient id={gradientId} x1="10" y1="9" x2="34" y2="38" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#F8FBFF" />
-          <stop offset="48%" stopColor="#9CCBFF" />
-          <stop offset="100%" stopColor="#3B82F6" />
+        <linearGradient id={gradientId} x1="12" y1="8" x2="36" y2="40" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#F87171" />
+          <stop offset="50%" stopColor="#DC2626" />
+          <stop offset="100%" stopColor="#991B1B" />
         </linearGradient>
       </defs>
 
+      {/* Rayo principal */}
       <path
-        d="M33.5 13.5C30.2 9.5 21.8 8.8 16.9 11.8C12.1 14.7 12.2 20.6 20.8 23.2C28.8 25.6 30.5 29.2 27.9 33.1C24.5 38.1 16.7 38.8 12.6 34.7"
-        stroke={`url(#${gradientId})`}
-        strokeWidth="3.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M33.5 13.5L38 13.5"
+        d="M26 8L12 26H24L20 40L36 20H24L26 8Z"
+        fill={`url(#${gradientId})`}
         stroke="#FFFFFF"
-        strokeOpacity="0.62"
-        strokeWidth="2.1"
-        strokeLinecap="round"
+        strokeWidth="1"
+        strokeLinejoin="miter"
       />
+      {/* Detalle interno (brillo) */}
       <path
-        d="M10 34.7L14.6 34.7"
-        stroke="#FFFFFF"
-        strokeOpacity="0.48"
-        strokeWidth="2.1"
-        strokeLinecap="round"
+        d="M25 10L14.5 24H23.5L20.5 35L33 22H23.5L25 10Z"
+        fill="#FFFFFF"
+        opacity="0.5"
       />
-      <circle cx="33.5" cy="13.5" r="2.6" fill="#F8FBFF" />
-      <circle cx="20.8" cy="23.2" r="2.35" fill="#93C5FD" />
-      <circle cx="12.6" cy="34.7" r="2.6" fill="#3B82F6" />
     </svg>
   )
 }
@@ -69,16 +60,15 @@ export function SoftnetMark({
   return (
     <span
       className={cn(
-        "relative isolate inline-flex items-center justify-center overflow-hidden rounded-[1rem] border",
+        "relative isolate inline-flex items-center justify-center overflow-hidden rounded-none border border-red-200",
         variant === "solid"
-          ? "border-black/8 bg-[linear-gradient(180deg,#151922_0%,#0B0D12_100%)] shadow-[0_16px_34px_rgba(15,23,42,0.18)]"
-          : "border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.04))] shadow-[0_18px_40px_rgba(2,6,23,0.22)] backdrop-blur-xl",
+          ? "bg-white shadow-[4px_4px_0_0_rgba(220,38,38,0.1)]"
+          : "bg-white/80 backdrop-blur-md shadow-sm",
         className
       )}
     >
-      <span className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(147,197,253,0.22),transparent_34%),radial-gradient(circle_at_82%_82%,rgba(59,130,246,0.18),transparent_38%)]" />
-      <span className="absolute inset-0 opacity-[0.36] [background-image:linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:14px_14px]" />
-      <span className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.42),transparent)]" />
+      <span className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(220,38,38,0.05),transparent_40%),radial-gradient(circle_at_80%_80%,rgba(220,38,38,0.05),transparent_40%)]" />
+      <span className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(220,38,38,0.1),transparent)]" />
       <SoftnetGlyph className={cn("relative z-10", glyphClassName)} />
     </span>
   )
@@ -95,60 +85,71 @@ export function SoftnetLockup({
   return (
     <div className={cn("inline-flex items-center gap-3.5", className)}>
       <SoftnetMark
-        className={cn(compact ? "h-11 w-11 rounded-[0.95rem]" : "h-12 w-12 rounded-[1rem]")}
-        variant={markVariant ?? (isDark ? "glass" : "solid")}
+        className={cn(compact ? "h-11 w-11 rounded-none" : "h-12 w-12 rounded-none")}
+        variant={markVariant ?? "solid"}
       />
 
       <div>
         <span
           className={cn(
-            "block text-[1.02rem] font-extrabold tracking-[-0.05em]",
-            isDark ? "text-white" : "text-[#121317]"
+            "block text-[1.02rem] font-extrabold tracking-[-0.02em]",
+            isDark ? "text-white" : "text-slate-900"
           )}
+          style={{ fontFamily: "var(--font-heading)" }}
         >
-          Softnet <span className="text-primary">Digital</span>
+          Softnet <span className="text-red-600">Digital</span>
         </span>
 
         <div
           className={cn(
-            "mt-0.5 flex items-center gap-3 text-[0.62rem] uppercase tracking-[0.28em]",
-            isDark ? "text-white/38" : "text-[#121317]/34"
+            "mt-px flex items-center gap-2 text-[0.6rem] uppercase tracking-[0.25em] font-mono",
+            isDark ? "text-white/40" : "text-slate-500"
           )}
         >
-          <span>Estudio web</span>
-          <span className="h-1 w-1 rounded-full bg-primary/80" />
-          <span>Sistemas</span>
+          <span>Agencia</span>
+          <span className="h-1 w-1 rounded-none bg-red-600" />
+          <span>Tech</span>
         </div>
       </div>
     </div>
   )
 }
 
+// Nuevo Motif decorativo: Nodos conectados / Energía
 export function SoftnetMotif({ className, tone = "light" }: SoftnetMotifProps) {
-  const stroke = tone === "dark" ? "rgba(147, 197, 253, 0.34)" : "rgba(59, 130, 246, 0.22)"
-  const strokeStrong = tone === "dark" ? "rgba(191, 219, 254, 0.44)" : "rgba(59, 130, 246, 0.34)"
-  const dot = tone === "dark" ? "#93C5FD" : "#3B82F6"
+  const stroke = tone === "dark" ? "rgba(220, 38, 38, 0.4)" : "rgba(220, 38, 38, 0.2)"
+  const strokeStrong = tone === "dark" ? "rgba(220, 38, 38, 0.8)" : "rgba(220, 38, 38, 0.5)"
+  const dot1 = "#DC2626"
+  const dot2 = "#991B1B"
+  const dot3 = "#EF4444"
 
   return (
     <svg viewBox="0 0 260 140" className={className} fill="none" aria-hidden="true">
+      {/* Líneas de conexión tipo circuito/energía */}
       <path
-        d="M18 110C56 76 84 38 132 26C176 15 208 26 242 72"
+        d="M20 110 L 80 110 L 120 50 L 180 50 L 220 90"
         stroke={stroke}
         strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeDasharray="4 8"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
+        strokeDasharray="4 6"
       />
       <path
-        d="M42 118C82 96 98 58 138 50C174 42 204 54 236 96"
+        d="M40 120 L 90 70 L 140 70 L 190 20 L 240 20"
         stroke={strokeStrong}
-        strokeWidth="1.2"
-        strokeLinecap="round"
-        opacity="0.9"
+        strokeWidth="1.5"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
       />
-      <path d="M112 16H246" stroke={stroke} strokeWidth="1" strokeOpacity="0.58" />
-      <circle cx="18" cy="110" r="4" fill={dot} />
-      <circle cx="132" cy="26" r="3.5" fill={dot} />
-      <circle cx="242" cy="72" r="4.5" fill={dot} />
+      
+      {/* Nodos */}
+      <rect x="18" y="108" width="4" height="4" fill={dot1} />
+      <rect x="118" y="48" width="4" height="4" fill={dot2} />
+      <rect x="218" y="88" width="4" height="4" fill={dot3} />
+      
+      <rect x="38" y="118" width="4" height="4" fill={dot3} />
+      <rect x="138" y="68" width="4" height="4" fill={dot1} />
+      <rect x="238" y="18" width="4" height="4" fill={dot2} />
     </svg>
   )
 }
@@ -161,8 +162,8 @@ export function SoftnetBrandNote({
   children?: ReactNode
 }) {
   return (
-    <div className={cn("code-caption text-[0.66rem] font-semibold text-primary/82", className)}>
-      {children ?? `${siteConfig.name} // signal system`}
+    <div className={cn("code-caption font-mono text-[0.66rem] font-semibold text-red-600/80 uppercase tracking-widest", className)}>
+      {children ?? `${siteConfig.name} // tech division`}
     </div>
   )
 }

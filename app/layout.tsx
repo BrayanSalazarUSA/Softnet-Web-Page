@@ -38,10 +38,12 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: "#0B0D12",
+  themeColor: "#FFFFFF",
   width: "device-width",
   initialScale: 1,
 }
+
+import CustomCursor from '@/components/ui/custom-cursor'
 
 export default function RootLayout({
   children,
@@ -50,10 +52,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <body suppressHydrationWarning className="bg-background font-sans text-foreground antialiased">
+      <body suppressHydrationWarning className="bg-background font-sans text-foreground antialiased selection:bg-primary/20 selection:text-primary">
+        <CustomCursor />
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
         <Analytics />
       </body>
     </html>
   )
 }
+

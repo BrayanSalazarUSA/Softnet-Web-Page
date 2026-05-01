@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { CheckCircle, Loader2, Send } from "lucide-react"
+import { CheckSquare, Loader2, Terminal } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -34,11 +34,11 @@ export function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   const fieldClassName =
-    "h-12 rounded-[0.8rem] border-black/8 bg-white text-[#111318] shadow-[0_12px_24px_rgba(17,19,24,0.04)] placeholder:text-[#111318]/36 hover:border-primary/35"
+    "h-12 rounded-none border-slate-200 bg-white text-slate-900 shadow-sm placeholder:text-slate-400 focus-visible:ring-red-600 focus-visible:border-red-600"
   const textareaClassName =
-    "resize-none rounded-[0.8rem] border-black/8 bg-white text-[#111318] shadow-[0_12px_24px_rgba(17,19,24,0.04)] placeholder:text-[#111318]/36 hover:border-primary/35"
+    "resize-none rounded-none border-slate-200 bg-white text-slate-900 shadow-sm placeholder:text-slate-400 focus-visible:ring-red-600 focus-visible:border-red-600"
   const selectClassName =
-    "h-12 w-full rounded-[0.8rem] border-black/8 bg-white text-[#111318] shadow-[0_12px_24px_rgba(17,19,24,0.04)] data-[placeholder]:text-[#111318]/36 hover:border-primary/35"
+    "h-12 w-full rounded-none border-slate-200 bg-white text-slate-900 shadow-sm data-[placeholder]:text-slate-400 focus-visible:ring-red-600 focus-visible:border-red-600"
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -51,78 +51,93 @@ export function ContactForm() {
   }
 
   return (
-    <section className="section-light py-24">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid gap-6 lg:grid-cols-[1.08fr_0.92fr] lg:gap-8">
+    <section className="bg-slate-50 py-24 relative overflow-hidden">
+      {/* Precision Grid Background */}
+      <div className="absolute inset-0 opacity-[0.4]"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), 
+            linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px)
+          `,
+          backgroundSize: "20px 20px",
+        }}
+      />
+
+      <div className="container relative z-10 mx-auto px-4 lg:px-8">
+        <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55 }}
-            className="paper-card rounded-[1rem] p-7 lg:p-8"
+            className="border border-slate-200 bg-white p-8 lg:p-12 shadow-sm"
           >
-            <span className="section-chip text-sm font-medium uppercase tracking-[0.22em] text-primary">
-              <span className="section-dot" />
-              Solicitud
-            </span>
-            <h2 className="mt-6 text-3xl font-extrabold tracking-[-0.04em] text-[#111318]">
-              Solicita una propuesta con enfoque visual, técnico y comercial
-            </h2>
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#111318]/62">
+            <div className="mb-6 flex items-start gap-4 border-l-2 border-red-600 pl-4">
+               <div>
+                  <p className="font-mono text-[0.65rem] font-bold uppercase tracking-widest text-red-600 mb-1">
+                    // SOLICITUD TÉCNICA
+                  </p>
+                  <h2 className="text-3xl font-bold tracking-[-0.02em] text-slate-900">
+                    Propuesta con enfoque visual, técnico y comercial.
+                  </h2>
+               </div>
+            </div>
+            
+            <p className="mb-8 text-sm leading-relaxed text-slate-600">
               Cuéntanos qué necesitas y te responderemos con una propuesta más clara, más útil y
               mejor aterrizada que un simple presupuesto genérico.
             </p>
 
             {isSubmitted ? (
               <motion.div
-                initial={{ opacity: 0, scale: 0.96 }}
+                initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="paper-card-soft mt-8 rounded-[1rem] p-8 text-center"
+                className="mt-8 border border-slate-200 bg-slate-50 p-8 text-center"
               >
-                <div className="neon-icon-box mx-auto flex h-16 w-16 items-center justify-center rounded-full">
-                  <CheckCircle className="h-8 w-8 text-primary" />
+                <div className="mx-auto flex h-16 w-16 items-center justify-center border border-slate-200 bg-white text-green-600 mb-6">
+                  <CheckSquare className="h-8 w-8" />
                 </div>
-                <h3 className="mt-5 text-2xl font-extrabold tracking-[-0.03em] text-[#111318]">
-                  Mensaje enviado
+                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                  Solicitud Recibida
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#111318]/58">
-                  Gracias por escribirnos. Te responderemos en menos de 24 horas con el siguiente paso.
+                <p className="text-sm text-slate-600">
+                  Gracias por escribirnos. Analizaremos tus requerimientos técnicos y te responderemos en menos de 24 horas con el siguiente paso.
                 </p>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="mt-8 space-y-6">
                 <div className="grid gap-6 md:grid-cols-2">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Nombre completo *</Label>
+                    <Label htmlFor="name" className="text-xs font-bold text-slate-700 uppercase tracking-wider font-mono">Nombre completo *</Label>
                     <Input id="name" name="name" required placeholder="Tu nombre" className={fieldClassName} />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email *</Label>
+                    <Label htmlFor="email" className="text-xs font-bold text-slate-700 uppercase tracking-wider font-mono">Email *</Label>
                     <Input id="email" name="email" type="email" required placeholder="tu@email.com" className={fieldClassName} />
                   </div>
                 </div>
 
                 <div className="grid gap-6 md:grid-cols-2">
                   <div className="space-y-2">
-                    <Label htmlFor="company">Empresa</Label>
+                    <Label htmlFor="company" className="text-xs font-bold text-slate-700 uppercase tracking-wider font-mono">Empresa</Label>
                     <Input id="company" name="company" placeholder="Nombre de tu empresa" className={fieldClassName} />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="phone">Teléfono</Label>
+                    <Label htmlFor="phone" className="text-xs font-bold text-slate-700 uppercase tracking-wider font-mono">Teléfono</Label>
                     <Input id="phone" name="phone" type="tel" placeholder="+34 600 000 000" className={fieldClassName} />
                   </div>
                 </div>
 
                 <div className="grid gap-6 md:grid-cols-2">
                   <div className="space-y-2">
-                    <Label htmlFor="projectType">Tipo de proyecto *</Label>
+                    <Label htmlFor="projectType" className="text-xs font-bold text-slate-700 uppercase tracking-wider font-mono">Tipo de proyecto *</Label>
                     <Select name="projectType" required>
                       <SelectTrigger className={selectClassName}>
                         <SelectValue placeholder="Selecciona una opción" />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="rounded-none border-slate-200">
                         {projectTypes.map((type) => (
-                          <SelectItem key={type} value={type}>
+                          <SelectItem key={type} value={type} className="rounded-none cursor-pointer hover:bg-slate-50 focus:bg-slate-50 focus:text-slate-900">
                             {type}
                           </SelectItem>
                         ))}
@@ -130,14 +145,14 @@ export function ContactForm() {
                     </Select>
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="budget">Presupuesto estimado</Label>
+                    <Label htmlFor="budget" className="text-xs font-bold text-slate-700 uppercase tracking-wider font-mono">Presupuesto estimado</Label>
                     <Select name="budget">
                       <SelectTrigger className={selectClassName}>
                         <SelectValue placeholder="Selecciona un rango" />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="rounded-none border-slate-200">
                         {budgetRanges.map((range) => (
-                          <SelectItem key={range} value={range}>
+                          <SelectItem key={range} value={range} className="rounded-none cursor-pointer hover:bg-slate-50 focus:bg-slate-50 focus:text-slate-900">
                             {range}
                           </SelectItem>
                         ))}
@@ -147,7 +162,7 @@ export function ContactForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message">Cuéntanos sobre tu proyecto *</Label>
+                  <Label htmlFor="message" className="text-xs font-bold text-slate-700 uppercase tracking-wider font-mono">Requerimientos Técnicos *</Label>
                   <Textarea
                     id="message"
                     name="message"
@@ -158,7 +173,7 @@ export function ContactForm() {
                   />
                 </div>
 
-                <Button type="submit" size="lg" disabled={isSubmitting} className="w-full md:w-auto">
+                <Button type="submit" size="lg" disabled={isSubmitting} className="w-full md:w-auto rounded-none bg-red-600 hover:bg-red-700 text-white font-mono text-xs uppercase tracking-wider h-12 px-8">
                   {isSubmitting ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -167,7 +182,7 @@ export function ContactForm() {
                   ) : (
                     <>
                       Enviar solicitud
-                      <Send className="h-4 w-4" />
+                      <Terminal className="ml-2 h-4 w-4" />
                     </>
                   )}
                 </Button>
@@ -180,16 +195,16 @@ export function ContactForm() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55, delay: 0.12 }}
-            className="grid gap-6"
+            className="grid gap-6 h-fit"
           >
-            <div className="accent-panel rounded-[1rem] p-8 text-white">
-              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-white/78">
-                Qué puedes esperar
+            <div className="border border-slate-200 bg-slate-900 p-8 text-white shadow-sm">
+              <p className="font-mono text-[0.65rem] font-bold uppercase tracking-widest text-red-500 mb-4">
+                // QUÉ PUEDES ESPERAR
               </p>
-              <h3 className="mt-4 text-3xl font-extrabold tracking-[-0.04em]">
-                Una conversación útil, no un formulario perdido en internet.
+              <h3 className="text-2xl font-bold tracking-[-0.02em] mb-6">
+                Una conversación útil, no un formulario perdido.
               </h3>
-              <div className="mt-7 grid gap-3">
+              <div className="grid gap-px bg-slate-800 border border-slate-800">
                 {[
                   "Respuesta rápida con lenguaje claro",
                   "Enfoque comercial y técnico desde el inicio",
@@ -197,30 +212,36 @@ export function ContactForm() {
                 ].map((item) => (
                   <div
                     key={item}
-                    className="rounded-[0.8rem] border border-white/16 bg-white/10 px-4 py-4 text-sm text-white/84"
+                    className="flex items-start gap-3 bg-slate-900 p-4"
                   >
-                    {item}
+                    <CheckSquare className="mt-px h-4 w-4 flex-shrink-0 text-red-500" />
+                    <span className="text-sm text-slate-300">
+                      {item}
+                    </span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="surface-card rounded-[1rem] p-8 text-white">
-              <h3 className="text-2xl font-extrabold tracking-[-0.04em]">
+            <div className="border border-slate-200 bg-white p-8 shadow-sm">
+              <h3 className="text-xl font-bold tracking-[-0.02em] text-slate-900 mb-6">
                 Por qué trabajar con nosotros
               </h3>
-              <div className="mt-6 grid gap-3">
+              <div className="grid gap-3">
                 {[
-                  "Cotización sin compromiso",
+                  "Cotización técnica sin compromiso",
                   "Visión de diseño + software + operación",
                   "Acompañamiento continuo durante el proyecto",
                   "Ejecución limpia, profesional y bien presentada",
-                ].map((item) => (
+                ].map((item, i) => (
                   <div
                     key={item}
-                    className="rounded-[0.8rem] border border-white/10 bg-white/[0.05] px-4 py-4 text-sm leading-relaxed text-white/80"
+                    className="flex items-start gap-4 border-b border-slate-100 pb-3 last:border-0 last:pb-0"
                   >
-                    {item}
+                    <span className="font-mono text-[0.6rem] font-bold uppercase tracking-widest text-slate-400 mt-1">
+                      0{i + 1}
+                    </span>
+                    <p className="text-sm leading-relaxed text-slate-600">{item}</p>
                   </div>
                 ))}
               </div>

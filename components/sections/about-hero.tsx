@@ -1,17 +1,23 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { SoftnetLockup, SoftnetMark, SoftnetMotif } from "@/components/brand/softnet-brand"
 import { siteConfig, stats } from "@/lib/site-config"
+import { Terminal, GitBranch } from "lucide-react"
 
 export function AboutHero() {
   return (
-    <section className="section-light relative overflow-hidden pt-32 pb-20">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute left-0 top-0 h-[20rem] w-[20rem] rounded-full bg-[radial-gradient(circle,rgba(59,130,246,0.06),transparent_68%)] blur-3xl" />
-        <div className="absolute right-0 top-12 h-[16rem] w-[16rem] rounded-full bg-[radial-gradient(circle,rgba(226,232,240,0.88),transparent_68%)] blur-3xl" />
-        <SoftnetMotif className="absolute right-10 top-10 hidden h-28 w-56 opacity-[0.5] lg:block" />
-      </div>
+    <section className="relative overflow-hidden pt-32 pb-20 bg-white border-b border-slate-200">
+      {/* Precision Grid Background */}
+      <div className="absolute inset-0 opacity-[0.4]"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), 
+            linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px)
+          `,
+          backgroundSize: "20px 20px",
+          maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 80%)",
+        }}
+      />
 
       <div className="container relative z-10 mx-auto px-4 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
@@ -20,26 +26,27 @@ export function AboutHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="section-chip text-sm font-medium uppercase tracking-[0.22em] text-primary">
-              <span className="section-dot" />
-              Nosotros
-            </span>
-            <h1 className="mt-6 text-4xl font-extrabold leading-[0.95] tracking-[-0.05em] md:text-5xl lg:text-6xl">
-              Diseñamos tecnología y presencia digital para empresas que necesitan transmitir{" "}
-              <span className="text-brand-gradient">seriedad, claridad y nivel</span>.
+            <div className="inline-flex items-center gap-2 border border-slate-200 bg-white px-3 py-1.5 shadow-sm mb-6">
+              <div className="h-1.5 w-1.5 bg-red-600 animate-pulse" />
+              <span className="font-mono text-[0.65rem] font-bold uppercase tracking-widest text-slate-500">
+                NOSOTROS
+              </span>
+            </div>
+
+            <h1 className="text-4xl font-bold leading-[1.05] tracking-[-0.03em] md:text-5xl lg:text-6xl text-slate-900">
+              Ingeniería de software con <br />
+              <span className="text-slate-400">criterio corporativo.</span>
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#111318]/66 md:text-xl">
-              {siteConfig.description} Nos importa el diseño, pero también la arquitectura, el
-              backend, los procesos y la forma en que una solución se sostiene cuando el negocio crece.
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 font-medium">
+              {siteConfig.description} Construimos arquitectura escalable, código limpio y sistemas robustos para empresas que dependen de la tecnología.
             </p>
 
-            <div className="mt-8 paper-card rounded-[1rem] p-6">
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary/72">
-                Cómo pensamos
+            <div className="mt-8 border border-slate-200 bg-slate-50 p-6 shadow-sm border-l-2 border-l-red-600">
+              <p className="font-mono text-[0.65rem] font-bold uppercase tracking-widest text-slate-500 mb-2">
+                NUESTRO ENFOQUE
               </p>
-              <p className="mt-3 text-base leading-relaxed text-[#111318]/66">
-                Una web bonita sirve poco si el fondo es débil. Nuestro trabajo es unir marca,
-                software y operación para que el resultado se vea premium y aguante la realidad del negocio.
+              <p className="text-sm leading-relaxed text-slate-700">
+                Una solución digital no es solo una interfaz. Es arquitectura, seguridad y rendimiento. Desarrollamos tecnología premium que escala con la realidad de tu negocio.
               </p>
             </div>
           </motion.div>
@@ -48,54 +55,49 @@ export function AboutHero() {
             initial={{ opacity: 0, x: 36 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.18 }}
-            className="surface-card rounded-[1rem] p-5 lg:p-6"
+            className="border border-slate-200 bg-white p-6 lg:p-8 shadow-sm"
           >
-            <div className="paper-card rounded-[1rem] p-6 lg:p-7">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-primary/72">
-                    Softnet Digital
+            <div className="flex items-start justify-between gap-4 mb-8">
+              <div>
+                <p className="font-mono text-[0.65rem] font-bold uppercase tracking-widest text-red-600 mb-2">
+                  // SOFTNET DIGITAL
+                </p>
+                <h2 className="text-2xl font-bold tracking-[-0.02em] text-slate-900">
+                  Partner Tecnológico
+                </h2>
+              </div>
+              <Terminal className="h-8 w-8 text-slate-300" />
+            </div>
+
+            <div className="grid gap-px bg-slate-200 border border-slate-200 sm:grid-cols-2 mb-8">
+              {stats.map((stat) => (
+                <div key={stat.label} className="bg-slate-50 p-6">
+                  <p className="text-3xl font-bold tracking-[-0.02em] text-slate-900">
+                    {stat.value}
                   </p>
-                  <h2 className="mt-3 text-3xl font-extrabold tracking-[-0.04em] text-[#111318]">
-                    Boutique digital con cabeza técnica
-                  </h2>
+                  <p className="font-mono text-[0.6rem] uppercase tracking-widest text-slate-500 mt-2">{stat.label}</p>
                 </div>
-                <SoftnetMark className="h-14 w-14 rounded-[1.2rem]" />
-              </div>
+              ))}
+            </div>
 
-              <div className="mt-6 border-b border-black/8 pb-5">
-                <SoftnetLockup compact className="[&_span.block]:text-[0.98rem]" />
-              </div>
-
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                {stats.map((stat) => (
-                  <div key={stat.label} className="paper-card-soft rounded-[0.9rem] p-5">
-                    <p className="text-3xl font-extrabold tracking-[-0.04em] text-[#111318]">
-                      {stat.value}
-                    </p>
-                    <p className="mt-2 text-sm text-[#111318]/58">{stat.label}</p>
+            <div className="border border-slate-200 bg-slate-900 p-6 text-white shadow-sm">
+              <p className="font-mono text-[0.65rem] font-bold uppercase tracking-widest text-red-500 mb-4">
+                Lo que nos define
+              </p>
+              <div className="grid gap-px bg-slate-800 border border-slate-800 sm:grid-cols-1">
+                {[
+                  "Código Limpio y Mantenible",
+                  "Arquitectura Cloud-Native",
+                  "Ejecución Técnica Rigurosa",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="bg-slate-900 p-3 text-sm text-slate-300 flex items-center gap-3"
+                  >
+                    <GitBranch className="h-4 w-4 text-red-500" />
+                    {item}
                   </div>
                 ))}
-              </div>
-
-              <div className="ink-panel mt-6 rounded-[0.95rem] p-6 text-white">
-                <p className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-white/46">
-                  Lo que nos define
-                </p>
-                <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                  {[
-                    "Criterio visual serio",
-                    "Capacidad full stack real",
-                    "Comunicación clara y aterrizada",
-                  ].map((item) => (
-                    <div
-                      key={item}
-                      className="rounded-[0.8rem] border border-white/10 bg-white/[0.05] px-4 py-3 text-sm text-white/80"
-                    >
-                      {item}
-                    </div>
-                  ))}
-                </div>
               </div>
             </div>
           </motion.div>
