@@ -14,12 +14,6 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
-  const { scrollYProgress } = useScroll()
-  const progressScaleX = useSpring(scrollYProgress, {
-    stiffness: 130,
-    damping: 28,
-    mass: 0.22,
-  })
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 18)
@@ -38,28 +32,27 @@ export function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.55 }}
         className={cn(
-          "fixed inset-x-0 top-0 z-50 border-b transition-colors duration-500",
-          isScrolled ? "bg-white/90 border-slate-200 backdrop-blur-md shadow-sm" : "bg-transparent border-transparent"
+          "fixed inset-x-0 top-0 z-50 transition-all duration-500",
+          isScrolled ? "py-4 bg-slate-950/80 backdrop-blur-xl border-b border-white/5 shadow-2xl" : "py-6 bg-transparent"
         )}
       >
-        {/* Scroll progress bar */}
-        <div className="absolute inset-x-0 bottom-[-1px] h-[1px] overflow-hidden bg-transparent z-50">
-          <motion.div
-            className="h-full origin-left bg-red-600"
-            style={{ scaleX: progressScaleX }}
-          />
-        </div>
+        {/* ── SCROLL PROGRESS BAR ── */}
+        <motion.div 
+          className="absolute bottom-0 left-0 h-[2px] bg-primary z-50 shadow-[0_0_10px_#00C896]"
+          style={{ width: `${(isScrolled ? 100 : 0)}%`, opacity: isScrolled ? 1 : 0 }} 
+          transition={{ duration: 0.3 }}
+        />
 
-        <div className="container mx-auto px-4 lg:px-8">
-          <nav className="flex h-16 items-center justify-between">
+        <div className="container mx-auto px-6 lg:px-12">
+          <nav className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <Link href="/" className="transition-opacity hover:opacity-80">
-                <SoftnetLockup compact theme="light" />
+                <SoftnetLockup compact theme="dark" />
               </Link>
             </div>
 
             <div className="hidden flex-1 justify-center lg:flex">
-              <div className="flex items-center gap-8">
+              <div className="flex items-center gap-1 bg-white/5 backdrop-blur-xl border border-white/10 p-1 rounded-full px-4 py-1.5 shadow-inner">
                 {navLinks.map((link) => {
                   const isActive = pathname === link.href
 
@@ -68,16 +61,10 @@ export function Navbar() {
                       key={link.href}
                       href={link.href}
                       className={cn(
-                        "relative py-2 font-mono text-[0.7rem] uppercase tracking-widest transition-colors duration-200",
-                        isActive ? "text-slate-900 font-bold" : "text-slate-500 hover:text-slate-900"
+                        "relative px-4 py-1.5 text-[10px] font-black uppercase tracking-widest transition-all duration-200 rounded-full",
+                        isActive ? "text-white bg-primary/20 shadow-[0_0_15px_rgba(0,200,150,0.1)]" : "text-slate-400 hover:text-white hover:bg-white/5"
                       )}
                     >
-                      {isActive && (
-                        <motion.span
-                          layoutId="navbar-active-line"
-                          className="absolute inset-x-0 bottom-0 h-px bg-red-600"
-                        />
-                      )}
                       {link.label}
                     </Link>
                   )
@@ -85,25 +72,32 @@ export function Navbar() {
               </div>
             </div>
 
-            <div className="hidden items-center gap-6 lg:flex">
-              <div className="hidden xl:block">
-                <SoftnetBrandNote className="text-[0.55rem] text-slate-500" />
+            <div className="hidden items-center gap-8 lg:flex">
+              {/* Engineering Status Badge */}
+              <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary"></span>
+                </span>
+                <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Systems: Op</span>
               </div>
 
-              <Button asChild size="sm" className="rounded-none border border-slate-200 bg-white hover:bg-slate-50 text-slate-900 font-mono text-xs uppercase tracking-wider h-9 px-6 shadow-sm">
-                <Link href="/contacto">
-                  <Code2 className="mr-2 h-3.5 w-3.5 text-red-600" />
-                  Request Demo
+              <Button asChild className="rounded-full bg-primary hover:bg-primary/90 text-black font-black text-[10px] uppercase tracking-widest px-6 h-10 transition-all duration-300 shadow-[0_0_20px_rgba(0,200,150,0.2)] hover:shadow-primary/40">
+                <Link href="/contacto" className="flex items-center gap-2">
+                  Contact Us
+                  <ArrowRight className="w-3 h-3" />
                 </Link>
               </Button>
             </div>
 
             <button
-              className="inline-flex h-9 w-9 items-center justify-center border border-slate-200 bg-white text-slate-900 transition-colors lg:hidden rounded-none shadow-sm"
+              className={cn(
+                "inline-flex h-10 w-10 items-center justify-center transition-colors lg:hidden rounded-full border border-border bg-background text-foreground"
+              )}
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
               aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
             >
-              {isMobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </nav>
         </div>
@@ -112,14 +106,14 @@ export function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
             className="fixed inset-0 z-40 lg:hidden"
           >
-            <div className="absolute inset-0 bg-white" />
-            <div className="relative h-full flex flex-col pt-24 px-6">
-              <div className="flex-1 space-y-4">
+            <div className="absolute inset-0 bg-background/95 backdrop-blur-2xl" />
+            <div className="relative h-full flex flex-col pt-28 px-8">
+              <div className="flex-1 space-y-6">
                 {navLinks.map((link, index) => (
                   <motion.div
                     key={link.href}
@@ -131,10 +125,10 @@ export function Navbar() {
                       href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
                       className={cn(
-                        "block border-b border-slate-100 pb-4 font-mono text-sm uppercase tracking-widest transition-colors",
+                        "block pb-4 text-2xl font-bold tracking-tight border-b border-border transition-colors",
                         pathname === link.href
-                          ? "text-red-600 font-bold"
-                          : "text-slate-500 hover:text-slate-900"
+                          ? "text-primary"
+                          : "text-slate-400 hover:text-foreground"
                       )}
                     >
                       {link.label}
@@ -143,11 +137,10 @@ export function Navbar() {
                 ))}
               </div>
 
-              <div className="mb-8">
-                <Button asChild size="lg" className="w-full rounded-none bg-red-600 text-white font-mono uppercase tracking-widest hover:bg-red-700">
+              <div className="pb-12">
+                <Button asChild size="lg" className="w-full rounded-full bg-primary text-white font-bold h-14 text-lg">
                   <Link href="/contacto">
-                    Request Demo
-                    <ArrowRight className="h-4 w-4 ml-2" />
+                    Cotizar Proyecto
                   </Link>
                 </Button>
               </div>

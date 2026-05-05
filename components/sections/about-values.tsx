@@ -38,47 +38,49 @@ const values = [
 
 export function AboutValues() {
   return (
-    <section id="valores" className="bg-slate-50 py-24 relative overflow-hidden border-b border-slate-200">
-      {/* Precision Grid Background */}
-      <div className="absolute inset-0 opacity-[0.4]"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), 
-            linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px)
-          `,
-          backgroundSize: "20px 20px",
-        }}
-      />
+    <section id="valores" className="bg-[#F8FAFC] py-32 relative overflow-hidden border-b border-slate-200/50">
+      {/* ── BACKGROUND ARCHITECTURE ── */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 opacity-[0.03]" 
+             style={{ 
+               backgroundImage: `linear-gradient(#050505 1px, transparent 1px), linear-gradient(90deg, #050505 1px, transparent 1px)`,
+               backgroundSize: '120px 120px',
+               maskImage: 'radial-gradient(circle at center, black, transparent 80%)'
+             }} 
+        />
+        <div className="absolute inset-0 opacity-[0.02] mix-blend-multiply bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      </div>
 
-      <div className="container relative z-10 mx-auto px-4 lg:px-8">
-        <div className="mb-16 border-l-2 border-red-600 pl-6">
-          <p className="font-mono text-[0.65rem] font-bold uppercase tracking-widest text-red-600 mb-2">
+      <div className="container relative z-10 mx-auto px-6 lg:px-12">
+        <div className="mb-20 border-l-4 border-primary pl-10">
+          <p className="font-mono text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-4">
             // PRINCIPIOS DE INGENIERÍA
           </p>
-          <h2 className="text-4xl lg:text-5xl font-bold tracking-[-0.02em] text-slate-900 max-w-3xl">
+          <h2 className="text-4xl lg:text-7xl font-black tracking-tighter text-slate-950 font-heading leading-tight max-w-4xl">
             Construimos software que{" "}
-            <span className="text-slate-400">se sostiene en producción.</span>
+            <span className="text-primary italic">se sostiene en producción.</span>
           </h2>
-          <p className="mt-4 max-w-2xl text-slate-600 font-medium">
+          <p className="mt-8 max-w-2xl text-slate-500 font-medium text-lg leading-relaxed">
             Nuestro estándar mezcla criterio visual, base técnica y ejecución responsable. La meta no es sorprender cinco minutos, sino construir una arquitectura que dure.
           </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-12">
+        <div className="grid gap-12 lg:grid-cols-12">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.55 }}
-            className="border border-slate-200 bg-slate-900 lg:col-span-4 p-8 text-white shadow-sm h-fit"
+            transition={{ duration: 0.8 }}
+            className="border border-slate-200 bg-white lg:col-span-4 p-10 rounded-[3rem] shadow-2xl h-fit relative overflow-hidden"
           >
-            <p className="font-mono text-[0.65rem] font-bold uppercase tracking-widest text-red-500 mb-4">
-              Nuestra postura
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-[40px]" />
+            <p className="font-mono text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-6 relative z-10">
+              // NUESTRA POSTURA
             </p>
-            <h3 className="text-2xl font-bold tracking-[-0.02em] mb-6">
+            <h3 className="text-2xl font-black tracking-tight text-slate-950 mb-8 relative z-10 font-heading">
               El diseño importa. La arquitectura también. Uno sin el otro no basta.
             </h3>
-            <div className="grid gap-px bg-slate-800 border border-slate-800">
+            <div className="space-y-4 relative z-10">
               {[
                 "Diseñamos para conversión y claridad.",
                 "Desarrollamos pensando en escalabilidad.",
@@ -86,10 +88,10 @@ export function AboutValues() {
               ].map((item) => (
                 <div
                   key={item}
-                  className="flex items-start gap-3 bg-slate-900 p-4"
+                  className="flex items-start gap-4 bg-slate-50 border border-slate-100 p-5 rounded-2xl hover:bg-primary/5 transition-colors group"
                 >
-                  <CheckSquare className="mt-px h-4 w-4 flex-shrink-0 text-red-500" />
-                  <span className="text-sm text-slate-300">
+                  <CheckSquare className="mt-1 h-4 w-4 flex-shrink-0 text-primary group-hover:scale-110 transition-transform" />
+                  <span className="text-sm text-slate-600 font-medium">
                     {item}
                   </span>
                 </div>
@@ -97,31 +99,31 @@ export function AboutValues() {
             </div>
           </motion.div>
 
-          <div className="grid gap-px bg-slate-200 border border-slate-200 sm:grid-cols-2 lg:col-span-8 shadow-sm h-fit">
+          <div className="grid gap-6 sm:grid-cols-2 lg:col-span-8 h-fit">
             {values.map((value, index) => {
               const Icon = value.icon
 
               return (
                 <motion.div
                   key={value.title}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: index * 0.05 }}
-                  className="bg-white p-8 group hover:bg-slate-50 transition-colors"
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-white border border-slate-200 p-8 rounded-[2.5rem] group hover:border-primary/40 hover:shadow-xl transition-all"
                 >
-                  <div className="mb-6 flex items-start justify-between">
-                    <div className="flex h-12 w-12 items-center justify-center border border-slate-200 bg-white text-slate-400 group-hover:text-red-600 transition-colors">
-                      <Icon className="h-5 w-5" />
+                  <div className="mb-8 flex items-start justify-between">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-50 text-slate-400 group-hover:bg-primary/10 group-hover:text-primary group-hover:border-primary/20 border border-transparent transition-all">
+                      <Icon className="h-6 w-6" />
                     </div>
-                    <span className="font-mono text-xs font-bold text-slate-400">
+                    <span className="font-mono text-[10px] font-black text-slate-300">
                       0{index + 1}
                     </span>
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-2">
+                  <h3 className="text-xl font-black text-slate-950 mb-3 group-hover:text-primary transition-colors font-heading tracking-tight">
                     {value.title}
                   </h3>
-                  <p className="text-sm leading-relaxed text-slate-600">
+                  <p className="text-sm leading-relaxed text-slate-500 font-medium">
                     {value.description}
                   </p>
                 </motion.div>

@@ -6,8 +6,8 @@ import { ProjectsGrid } from "@/components/sections/projects-grid"
 import { CTA } from "@/components/sections/cta"
 
 export const metadata: Metadata = {
-  title: "Proyectos",
-  description: "Portafolio de proyectos de desarrollo web y aplicaciones. Casos de éxito en diseño web corporativo, landing pages, e-commerce y sistemas empresariales.",
+  title: "Proyectos | Softnet",
+  description: "Portafolio de ingeniería de software y ecosistemas web. Casos de éxito en automatización, dashboards y plataformas de alto rendimiento.",
 }
 
 export default function ProyectosPage() {

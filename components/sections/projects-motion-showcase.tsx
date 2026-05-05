@@ -52,7 +52,7 @@ export function ProjectsMotionShowcase() {
               <span className="text-brand-gradient">cuando empiezan a moverse frente a ti</span>.
             </>
           }
-          description="Esta vitrina mezcla sectores, estilos y tipos de producto para mostrar que Softnet puede diseñar presencia, software y experiencia visual con más intención y más nivel percibido."
+          description="Esta vitrina mezcla sectores, estilos y tipos de producto para mostrar que Innova Systems puede diseñar presencia, software y experiencia visual con más intención y más nivel percibido."
         />
 
         <Reveal className="js-project-motion-stage project-marquee-shell relative overflow-hidden rounded-[1rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-4 shadow-[0_28px_70px_rgba(2,6,23,0.22)] sm:p-5">
@@ -65,11 +65,11 @@ export function ProjectsMotionShowcase() {
                 Casos y direcciones
               </p>
               <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/62">
-                Web corporativa, SaaS, inmobiliaria, clínica, e-commerce y productos digitales mejor presentados.
+                Web corporativa, SaaS, inmobiliaria, clínica, e-commerce y productos digitales mejor presentados por Innova Systems.
               </p>
             </div>
 
-            <div className="inline-flex items-center gap-2 border border-white/10 bg-white/[0.04] px-3 py-2 text-[0.66rem] font-semibold uppercase tracking-[0.2em] text-white/46">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-[0.66rem] font-semibold uppercase tracking-[0.2em] text-white/46">
               <Sparkles className="h-3.5 w-3.5 text-primary" />
               Motion showcase
             </div>

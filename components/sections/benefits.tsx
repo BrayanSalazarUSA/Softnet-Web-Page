@@ -38,12 +38,12 @@ export function Benefits() {
 
             <div className="relative z-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
               <div>
-              <p className="text-[0.66rem] font-semibold uppercase tracking-[0.28em] text-primary/78">
+                <p className="text-[0.66rem] font-semibold uppercase tracking-[0.28em] text-primary/78">
                   Base de ejecución
-              </p>
-              <h3 className="mt-4 max-w-[11ch] text-4xl font-extrabold tracking-[-0.05em] text-[#121317]">
+                </p>
+                <h3 className="mt-4 max-w-[11ch] text-4xl font-extrabold tracking-[-0.05em] text-[#121317]">
                   Que todo se sienta parte del mismo sistema.
-              </h3>
+                </h3>
 
                 <StaggerGroup delayChildren={0.06} stagger={0.08} className="mt-8 space-y-5 border-l border-black/10 pl-6">
                   {principles.map((item, index) => (
@@ -74,9 +74,8 @@ export function Benefits() {
                   {Object.entries(stackGroups).map(([category, items], index) => (
                     <StaggerItem
                       key={category}
-                      className={`border border-black/10 bg-white/62 p-4 backdrop-blur-sm ${
-                        index % 2 === 1 ? "lg:ml-8" : ""
-                      }`}
+                      className={`border border-black/10 bg-white/62 p-4 backdrop-blur-sm ${index % 2 === 1 ? "lg:ml-8" : ""
+                        }`}
                     >
                       <div className="flex items-center justify-between gap-3">
                         <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-primary/78">

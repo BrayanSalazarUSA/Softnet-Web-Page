@@ -38,12 +38,13 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: "#FFFFFF",
+  themeColor: "#000000",
   width: "device-width",
   initialScale: 1,
 }
 
 import CustomCursor from '@/components/ui/custom-cursor'
+import { WhatsAppWidget } from '@/components/ui/whatsapp-widget'
 
 export default function RootLayout({
   children,
@@ -52,9 +53,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <body suppressHydrationWarning className="bg-background font-sans text-foreground antialiased selection:bg-primary/20 selection:text-primary">
+      <body suppressHydrationWarning className="bg-background font-sans text-foreground antialiased selection:bg-primary/30 selection:text-white">
+        {/* Global Textures */}
+        <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
+        
         <CustomCursor />
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <WhatsAppWidget />
         <Analytics />
       </body>
     </html>

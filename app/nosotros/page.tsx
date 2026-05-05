@@ -4,12 +4,12 @@ import { Footer } from "@/components/layout/footer"
 import { AboutHero } from "@/components/sections/about-hero"
 import { AboutValues } from "@/components/sections/about-values"
 import { AboutTech } from "@/components/sections/about-tech"
-import { Testimonials } from "@/components/sections/testimonials"
+import { TestimonialsSoftnet } from "@/components/sections/testimonials-softnet"
 import { CTA } from "@/components/sections/cta"
 
 export const metadata: Metadata = {
-  title: "Nosotros",
-  description: "Conoce a Softnet Digital. Agencia de desarrollo web y soluciones digitales con años de experiencia creando proyectos de alto impacto para empresas.",
+  title: "Nosotros | Softnet",
+  description: "Conoce a Softnet. Ingeniería de software, ecosistemas web y automatización de alto nivel.",
 }
 
 export default function NosotrosPage() {
@@ -20,7 +20,7 @@ export default function NosotrosPage() {
         <AboutHero />
         <AboutValues />
         <AboutTech />
-        <Testimonials />
+        <TestimonialsSoftnet />
         <CTA />
       </main>
       <Footer />
